@@ -7,7 +7,7 @@ namespace PrintBoardDesigner
 {
     public class Circuit
     {
-        public List<InputProbe> inputNodes;
+        public List<InputNode> inputNodes;
         public Queue<CircuitComponent> currentQueue;
         public Queue<CircuitComponent> nextQueue;
 

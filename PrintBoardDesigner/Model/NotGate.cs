@@ -7,5 +7,9 @@ namespace PrintBoardDesigner
 {
     public class NotGate : Gate
     {
+        public override void CalculateState()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

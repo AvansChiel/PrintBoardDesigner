@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PrintBoardDesigner
 {
-    public abstract class Probe : CircuitComponent
+    public abstract class Node : CircuitComponent
     {
     }
 }

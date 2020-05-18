@@ -7,30 +7,35 @@ namespace PrintBoardDesigner
 {
     public class MainController
     {
-       
+
+        private CircuitParser circuitParser;
+        private GuiController guiController;
+        private Circuit circuit;
+
+        public MainController()
+        {
+            this.CircuitParser = new CircuitParser();
+        }
+
 
         public GuiController GuiController
         {
-            get => default(GuiController);
-            set
-            {
-            }
+            get { return guiController; }
+            set { guiController = value; }
         }
 
-        public ParseController ParseController
+        public CircuitParser CircuitParser
         {
-            get => default(ParseController);
-            set
-            {
-            }
+            get { return circuitParser; }
+            set { circuitParser = value; }
         }
 
         public Circuit Circuit
         {
-            get => default(Circuit);
-            set
-            {
-            }
+            get { return circuit; }
+            set { circuit = value; }
         }
+
+    
     }
 }

@@ -8,8 +8,12 @@ namespace PrintBoardDesigner
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
+            MainController mc = new MainController();
+
+            mc.CircuitParser.ParseFile();
         }
     }
 }

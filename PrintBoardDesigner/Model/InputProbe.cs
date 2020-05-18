@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PrintBoardDesigner
 {
-    public class InputProbe : Probe
+    public class InputNode : Node
     {
     }
 }
