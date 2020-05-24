@@ -27,7 +27,8 @@ namespace PrintBoardDesigner
 
         public Queue<CircuitComponent> ParseFile()
         {
-            Dictionary<string, CircuitComponent> circuitComponentDict = new Dictionary<string, CircuitComponent>();
+            Dictionary<string, string> circuitComponentDict = new Dictionary<string, string>();
+            Dictionary<string, string[]> circuitConnectionDict = new Dictionary<string, string[]>();
             if (File.Exists(textFile))
             {
                 // Read file using StreamReader. Reads file line by line  
@@ -45,41 +46,52 @@ namespace PrintBoardDesigner
                         }
                         string first = ln.Substring(0, ln.IndexOf(':'));
                         string second = ln.Substring(ln.IndexOf(':')+2, (ln.IndexOf(';')-2 - (ln.IndexOf(':'))));
-                        string type;
-                        string state = "LOW";
-                        //check if second contains underscore. if so, decide state
-                        if (second.Contains("_"))
-                        {
-                            type = second.Substring(0, second.IndexOf('_'));
-                            int fst = second.IndexOf('_') + 1;
-                            int scd = second.Length - 1 - second.IndexOf('_') + 1;
-                            state = second.Substring(second.IndexOf('_') + 1, second.Length - 1 - second.IndexOf('_'));
-                        }
-                        else
-                        {
-                            type = second;
-                        }
+                        //string type;
+                        //string state = "LOW";
+                        ////check if second contains underscore. if so, decide state
+                        //if (second.Contains("_"))
+                        //{
+                        //    type = second.Substring(0, second.IndexOf('_'));
+                        //    int fst = second.IndexOf('_') + 1;
+                        //    int scd = second.Length - 1 - second.IndexOf('_') + 1;
+                        //    state = second.Substring(second.IndexOf('_') + 1, second.Length - 1 - second.IndexOf('_'));
+                        //}
+                        //else
+                        //{
+                        //    type = second;
+                        //}
 
 
-                        //if not is a type, parse connectors
-                        if (!this.CircuitComponentFactory.DictionaryHasType(type))
+                        /// If not is a type, Add to connections list
+                        if (!this.CircuitComponentFactory.DictionaryHasType(second))
                         {
-                            //find object in circuitComponentDict using first
-                            //add links between objs from circuitComponentDict
-                            //return (something)
+                            string[] connList;
+
+                            if (second.Contains(','))
+                            {
+                                connList = second.Split(',');
+                            }
+                            else
+                            {
+                                connList = new string[]{ second };
+                            }
+
+                            circuitConnectionDict[first] = connList;
+                            
+                     
                         }
                         //else parse components
                         else
                         {
                          
                             //create component
-                            CircuitComponent component = this.CircuitComponentFactory.CreateCircuitComponent(type);
-                            if(state == "HIGH")
-                            {
-                                component.hasCurrent = true;
-                            }
+                            //CircuitComponent component = this.CircuitComponentFactory.CreateCircuitComponent(second);
+                            //if(state == "HIGH")
+                            //{
+                            //    component.hasCurrent = true;
+                            //}
                             //add component do dict key=name, value = component
-                            circuitComponentDict[first] = component;
+                            circuitComponentDict[first] = second;
 
                         }
 
@@ -91,6 +103,8 @@ namespace PrintBoardDesigner
                     }
                     file.Close();
                     Console.WriteLine($"File has {counter} lines.");
+                    Console.Write(circuitComponentDict["NODE1"]);
+                    Console.Write(circuitConnectionDict["NODE1"][0]);
                 }
             }
 
