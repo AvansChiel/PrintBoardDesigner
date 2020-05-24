@@ -25,10 +25,11 @@ namespace PrintBoardDesigner
             _types[name] = type;
         }
 
-        public CircuitComponent CreateCircuitComponent(string type)
+        public CircuitComponent CreateCircuitComponent(string name, string type)
         {
             Type t = _types[type];
             CircuitComponent c = (CircuitComponent)Activator.CreateInstance(t);
+            c.name = name;
             return c;
         }
 

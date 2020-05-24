@@ -7,14 +7,13 @@ namespace PrintBoardDesigner
 {
     public class MainController
     {
-
-        private CircuitParser circuitParser;
         private GuiController guiController;
         private Circuit circuit;
+        private CircuitBuilder circuitBuilder;
 
         public MainController()
         {
-            this.CircuitParser = new CircuitParser();
+            this.CircuitBuilder = new CircuitBuilder();
         }
 
 
@@ -24,18 +23,21 @@ namespace PrintBoardDesigner
             set { guiController = value; }
         }
 
-        public CircuitParser CircuitParser
-        {
-            get { return circuitParser; }
-            set { circuitParser = value; }
-        }
-
         public Circuit Circuit
         {
             get { return circuit; }
             set { circuit = value; }
         }
 
-    
+        public CircuitBuilder CircuitBuilder
+        {
+            get { return circuitBuilder; }
+            set { circuitBuilder = value; }
+        }
+
+        public void init()
+        {
+            this.circuit = circuitBuilder.buildCircuit();
+        }
     }
 }

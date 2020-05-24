@@ -13,7 +13,7 @@ namespace PrintBoardDesigner
         {
             MainController mc = new MainController();
 
-            mc.CircuitParser.ParseFile();
+            mc.init();
         }
     }
 }

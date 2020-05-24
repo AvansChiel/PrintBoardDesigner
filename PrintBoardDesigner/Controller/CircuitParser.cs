@@ -11,24 +11,24 @@ namespace PrintBoardDesigner
         //Default file. MAKE SURE TO CHANGE THIS LOCATION AND FILE PATH TO YOUR FILE   
         static readonly string textFile = @"C:\Users\Chiel\Documents\studie\dp\circuits\Circuit1_FullAdder.txt";
 
-        private CircuitComponentFactory circuitComponentFactory;
+        private Dictionary<string, string> circuitComponentDict = new Dictionary<string, string>();
+        private Dictionary<string, string[]> circuitConnectionDict = new Dictionary<string, string[]>();
 
-        public CircuitParser()
+        public Dictionary<string, string> CircuitComponentDict
         {
-            this.circuitComponentFactory = new CircuitComponentFactory();
+            get { return circuitComponentDict; }
+            set { circuitComponentDict = value; }
+        }
+
+        public Dictionary<string, string[]> CircuitConnectionDict
+        {
+            get { return circuitConnectionDict; }
+            set { circuitConnectionDict = value; }
         }
 
 
-
-        public CircuitComponentFactory CircuitComponentFactory
+        public void ParseFile()
         {
-            get { return circuitComponentFactory; }
-        }
-
-        public Queue<CircuitComponent> ParseFile()
-        {
-            Dictionary<string, string> circuitComponentDict = new Dictionary<string, string>();
-            Dictionary<string, string[]> circuitConnectionDict = new Dictionary<string, string[]>();
             if (File.Exists(textFile))
             {
                 // Read file using StreamReader. Reads file line by line  
@@ -36,6 +36,7 @@ namespace PrintBoardDesigner
                 {
                     int counter = 0;
                     string ln;
+                    bool connectionMode = false;
 
                     while ((ln = file.ReadLine()) != null)
                     {
@@ -43,6 +44,11 @@ namespace PrintBoardDesigner
                         if(ln == "" || ln.Substring(0,1) == "#")
                         {
                             continue;
+                        }
+
+                        if(ln.Contains("# Description of all the edges"))
+                        {
+                            connectionMode = true;
                         }
                         string first = ln.Substring(0, ln.IndexOf(':'));
                         string second = ln.Substring(ln.IndexOf(':')+2, (ln.IndexOf(';')-2 - (ln.IndexOf(':'))));
@@ -63,7 +69,7 @@ namespace PrintBoardDesigner
 
 
                         /// If not is a type, Add to connections list
-                        if (!this.CircuitComponentFactory.DictionaryHasType(second))
+                        if (connectionMode)
                         {
                             string[] connList;
 
