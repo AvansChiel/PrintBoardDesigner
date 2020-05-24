@@ -7,17 +7,36 @@ namespace PrintBoardDesigner
 {
     public class Circuit
     {
-        public List<InputNode> inputNodes;
-        public Queue<CircuitComponent> currentQueue;
-        public Queue<CircuitComponent> nextQueue;
+        private List<CircuitComponent> inputNodes;
+        private Queue<CircuitComponent> currentQueue;
+        private Queue<CircuitComponent> nextQueue;
 
-        public CircuitComponent CircuitComponent
+        public List<CircuitComponent> InputNodes
         {
-            get => default(CircuitComponent);
-            set
+            get { return inputNodes; }
+            set { inputNodes = value; }
+        }
+
+        public Queue<CircuitComponent> CurrentQueue
+        {
+            get { return currentQueue; }
+            set { currentQueue = value; }
+        }
+
+        public Queue<CircuitComponent> NextQueue
+        {
+            get { return nextQueue; }
+            set { nextQueue = value; }
+        }
+
+        public Circuit(List<CircuitComponent> inputNodes)
+        {
+            foreach(CircuitComponent node in inputNodes)
             {
+                this.nextQueue.Enqueue(node);
             }
         }
+       
 
         public void ProcessQueue()
         {

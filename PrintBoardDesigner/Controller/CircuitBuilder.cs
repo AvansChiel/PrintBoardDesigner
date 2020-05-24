@@ -36,10 +36,28 @@ namespace PrintBoardDesigner
             Dictionary<string, string[]> connectionsStringsDict = this.CircuitParser.CircuitConnectionDict;
 
             Dictionary<string, CircuitComponent> componentsDict = new Dictionary<string, CircuitComponent>();
+            List<CircuitComponent> inputNodesList = new List<CircuitComponent>();
 
             foreach (KeyValuePair<string, string> entry in componentsStringsDict)
             {
-                CircuitComponent component = this.CircuitComponentFactory.CreateCircuitComponent(entry.Key, entry.Value);
+                string type = entry.Value;
+                if (type.Contains("INPUT")){
+                    type = "INPUT";
+                }
+                CircuitComponent component = this.CircuitComponentFactory.CreateCircuitComponent(entry.Key, type);
+                //substr on input nodes to create correct component
+                if (type == "INPUT")
+                {
+                    if (entry.Value.Contains("HIGH"))
+                    {
+                        component.hasCurrent = true;
+                    }
+                    else
+                    {
+                        component.hasCurrent = false;
+                    }
+                    inputNodesList.Add(component);
+                }
                 componentsDict.Add(entry.Key, component);
                 // do something with entry.Value or entry.Key
             }
@@ -49,6 +67,8 @@ namespace PrintBoardDesigner
                 foreach(string val in entry.Value)
                 {
                     componentsDict[entry.Key].outputs.Add(componentsDict[val]);
+                    CircuitComponent outputComp = componentsDict[val];
+                    outputComp.inputs.Add(componentsDict[entry.Key]);
                 }
                 
                 // do something with entry.Value or entry.Key
@@ -59,7 +79,7 @@ namespace PrintBoardDesigner
 
 
 
-            Circuit circuit = new Circuit();
+            Circuit circuit = new Circuit(inputNodesList);
             return circuit;
         }
     }
