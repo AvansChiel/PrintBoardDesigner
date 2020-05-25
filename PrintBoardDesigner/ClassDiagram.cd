@@ -57,7 +57,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.Wire">
-    <Position X="8.75" Y="8.5" Width="1.5" />
+    <Position X="8.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Wire.cs</FileName>
