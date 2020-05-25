@@ -31,7 +31,10 @@ namespace PrintBoardDesigner
 
         public Circuit(List<CircuitComponent> inputNodes)
         {
-            foreach(CircuitComponent node in inputNodes)
+            this.NextQueue = new Queue<CircuitComponent>();
+            this.CurrentQueue = new Queue<CircuitComponent>();
+            this.inputNodes = new List<CircuitComponent>();
+            foreach (CircuitComponent node in inputNodes)
             {
                 this.nextQueue.Enqueue(node);
             }

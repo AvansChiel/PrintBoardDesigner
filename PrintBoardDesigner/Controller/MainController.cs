@@ -37,6 +37,7 @@ namespace PrintBoardDesigner
 
         public void init()
         {
+            Console.WriteLine("init");
             this.circuit = circuitBuilder.buildCircuit();
         }
     }

@@ -31,6 +31,7 @@ namespace PrintBoardDesigner
 
         public Circuit buildCircuit()
         {
+            Console.WriteLine("beginbuild");
             this.CircuitParser.ParseFile();
             Dictionary<string, string> componentsStringsDict = this.CircuitParser.CircuitComponentDict;
             Dictionary<string, string[]> connectionsStringsDict = this.CircuitParser.CircuitConnectionDict;
@@ -67,6 +68,8 @@ namespace PrintBoardDesigner
                 foreach(string val in entry.Value)
                 {
                     componentsDict[entry.Key].outputs.Add(componentsDict[val]);
+                    //Console.WriteLine("val V");
+                    //Console.WriteLine(val);
                     CircuitComponent outputComp = componentsDict[val];
                     outputComp.inputs.Add(componentsDict[entry.Key]);
                 }
@@ -78,7 +81,7 @@ namespace PrintBoardDesigner
 
 
 
-
+            Console.WriteLine("camehere");
             Circuit circuit = new Circuit(inputNodesList);
             return circuit;
         }

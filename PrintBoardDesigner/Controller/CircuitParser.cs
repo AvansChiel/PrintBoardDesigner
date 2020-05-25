@@ -31,7 +31,7 @@ namespace PrintBoardDesigner
         {
             if (File.Exists(textFile))
             {
-                // Read file using StreamReader. Reads file line by line  
+                /// Read file using StreamReader. Reads file line by line  
                 using (StreamReader file = new StreamReader(textFile))
                 {
                     int counter = 0;
@@ -40,16 +40,19 @@ namespace PrintBoardDesigner
 
                     while ((ln = file.ReadLine()) != null)
                     {
-                        //Console.WriteLine(ln);
-                        if(ln == "" || ln.Substring(0,1) == "#")
+                        ///if line contains *, set connectionMode to true in order to parse connections
+                        if (ln.Contains("# Description of all the edges"))
+                        {
+                            connectionMode = true;
+                        }
+
+                        ///if line contains #, treat as comment and skip
+                        if (ln == "" || ln.Substring(0,1) == "#")
                         {
                             continue;
                         }
 
-                        if(ln.Contains("# Description of all the edges"))
-                        {
-                            connectionMode = true;
-                        }
+                       
                         string first = ln.Substring(0, ln.IndexOf(':'));
                         string second = ln.Substring(ln.IndexOf(':')+2, (ln.IndexOf(';')-2 - (ln.IndexOf(':'))));
                         //string type;
@@ -68,7 +71,7 @@ namespace PrintBoardDesigner
                         //}
 
 
-                        /// If not is a type, Add to connections list
+                        /// connectionMode is true, treat parsed elements as connections
                         if (connectionMode)
                         {
                             string[] connList;
@@ -86,7 +89,7 @@ namespace PrintBoardDesigner
                             
                      
                         }
-                        //else parse components
+                        ///connectionMode is false, treat parsed elements as components
                         else
                         {
                          
@@ -110,12 +113,11 @@ namespace PrintBoardDesigner
                     file.Close();
                     Console.WriteLine($"File has {counter} lines.");
                     Console.Write(circuitComponentDict["NODE1"]);
-                    Console.Write(circuitConnectionDict["NODE1"][0]);
+                    Console.Write(circuitConnectionDict["NODE1"][1]);
                 }
             }
 
-            Console.ReadKey();
-            return new Queue<CircuitComponent>();
+            //Console.ReadKey();
         }
     }
 }
