@@ -7,21 +7,14 @@ namespace PrintBoardDesigner
 {
     public class MainController
     {
-        private GuiController guiController;
         private Circuit circuit;
         private CircuitBuilder circuitBuilder;
 
         public MainController()
         {
-            this.CircuitBuilder = new CircuitBuilder();
+            this.circuitBuilder = new CircuitBuilder();
         }
 
-
-        public GuiController GuiController
-        {
-            get { return guiController; }
-            set { guiController = value; }
-        }
 
         public Circuit Circuit
         {
@@ -29,16 +22,25 @@ namespace PrintBoardDesigner
             set { circuit = value; }
         }
 
-        public CircuitBuilder CircuitBuilder
+        //public CircuitBuilder CircuitBuilder
+        //{
+        //    get { return circuitBuilder; }
+        //    set { circuitBuilder = value; }
+        //}
+
+        public bool BuildCircuit(string fileLocation)
         {
-            get { return circuitBuilder; }
-            set { circuitBuilder = value; }
+            Circuit circuit = circuitBuilder.BuildCircuit(fileLocation);
+            //TODO Validate circuit
+
+            this.circuit = circuit;
+            return true;
         }
 
-        public void init()
+        public void init() //TODO Dit moet weg. Dit is het pakketje dat wordt gebruikt door de VIEW. Zelf dus niet uitvoerbaar.
         {
             Console.WriteLine("init");
-            this.circuit = circuitBuilder.buildCircuit();
+            //this.circuit = circuitBuilder.buildCircuit();
         }
     }
 }

@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintBoardDesigner", "PrintBoardDesigner\PrintBoardDesigner.csproj", "{A986B676-6E40-491A-8BEF-D9F20B941FDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintBoardView", "PrintBoardView\PrintBoardView.csproj", "{108C4423-5C94-4131-ACE8-95772804D22C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A986B676-6E40-491A-8BEF-D9F20B941FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A986B676-6E40-491A-8BEF-D9F20B941FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A986B676-6E40-491A-8BEF-D9F20B941FDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{108C4423-5C94-4131-ACE8-95772804D22C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{108C4423-5C94-4131-ACE8-95772804D22C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{108C4423-5C94-4131-ACE8-95772804D22C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{108C4423-5C94-4131-ACE8-95772804D22C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

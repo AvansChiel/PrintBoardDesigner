@@ -44,11 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\CircuitBuilder.cs" />
+    <Compile Include="Controller\FileReader.cs" />
     <Compile Include="Model\AndGate.cs" />
     <Compile Include="Model\Circuit.cs" />
     <Compile Include="Model\CircuitComponent.cs" />
     <Compile Include="Controller\CircuitComponentFactory.cs" />
-    <Compile Include="Controller\GuiController.cs" />
     <Compile Include="Model\InputProbe.cs" />
     <Compile Include="Model\NandGate.cs" />
     <Compile Include="Model\Node.cs" />

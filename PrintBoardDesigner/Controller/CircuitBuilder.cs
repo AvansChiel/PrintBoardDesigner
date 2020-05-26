@@ -10,31 +10,35 @@ namespace PrintBoardDesigner
 
         private CircuitComponentFactory circuitComponentFactory;
         private CircuitParser circuitParser;
+        private FileReader fileReader;
 
         public CircuitBuilder()
         {
-            this.CircuitComponentFactory = new CircuitComponentFactory();
-            this.CircuitParser = new CircuitParser();
+            this.circuitComponentFactory = new CircuitComponentFactory();
+            this.fileReader = new FileReader();
+            this.circuitParser = new CircuitParser();
         }
 
-        public CircuitComponentFactory CircuitComponentFactory
-        {
-            get { return circuitComponentFactory; }
-            set { circuitComponentFactory = value; }
-        }
+        //public CircuitComponentFactory CircuitComponentFactory
+        //{
+        //    get { return circuitComponentFactory; }
+        //    set { circuitComponentFactory = value; }
+        //}
 
-        public CircuitParser CircuitParser
-        {
-            get { return circuitParser; }
-            set { circuitParser = value; }
-        }
+        //public CircuitParser CircuitParser
+        //{
+        //    get { return circuitParser; }
+        //    set { circuitParser = value; }
+        //}
 
-        public Circuit buildCircuit()
+        public Circuit BuildCircuit(string fileLocation)
         {
             Console.WriteLine("beginbuild");
-            this.CircuitParser.ParseFile();
-            Dictionary<string, string> componentsStringsDict = this.CircuitParser.CircuitComponentDict;
-            Dictionary<string, string[]> connectionsStringsDict = this.CircuitParser.CircuitConnectionDict;
+
+            List<string> fileLines = this.fileReader.ReadFile(fileLocation);
+            this.circuitParser.ParseFile(fileLines);
+            Dictionary<string, string> componentsStringsDict = this.circuitParser.CircuitComponentDict;
+            Dictionary<string, string[]> connectionsStringsDict = this.circuitParser.CircuitConnectionDict;
 
             Dictionary<string, CircuitComponent> componentsDict = new Dictionary<string, CircuitComponent>();
             List<CircuitComponent> inputNodesList = new List<CircuitComponent>();
@@ -45,7 +49,7 @@ namespace PrintBoardDesigner
                 if (type.Contains("INPUT")){
                     type = "INPUT";
                 }
-                CircuitComponent component = this.CircuitComponentFactory.CreateCircuitComponent(entry.Key, type);
+                CircuitComponent component = this.circuitComponentFactory.CreateCircuitComponent(entry.Key, type);
                 //substr on input nodes to create correct component
                 if (type == "INPUT")
                 {

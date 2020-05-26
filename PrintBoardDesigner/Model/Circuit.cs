@@ -33,7 +33,7 @@ namespace PrintBoardDesigner
         {
             this.NextQueue = new Queue<CircuitComponent>();
             this.CurrentQueue = new Queue<CircuitComponent>();
-            this.inputNodes = new List<CircuitComponent>();
+            this.inputNodes = inputNodes;
             foreach (CircuitComponent node in inputNodes)
             {
                 this.nextQueue.Enqueue(node);
