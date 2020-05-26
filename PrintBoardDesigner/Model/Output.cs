@@ -5,7 +5,11 @@ using System.Text;
 
 namespace PrintBoardDesigner
 {
-    public class Output
+    public class Output : Node
     {
+        public override void CalculateState()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

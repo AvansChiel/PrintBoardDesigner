@@ -51,13 +51,17 @@ namespace PrintBoardDesigner
                 {
                     if (entry.Value.Contains("HIGH"))
                     {
-                        component.hasCurrent = true;
+                        component.state = States.STATE_TRUE;
                     }
                     else
                     {
-                        component.hasCurrent = false;
+                        component.state = States.STATE_FALSE;
                     }
                     inputNodesList.Add(component);
+                }
+                else
+                {
+                    component.state = States.STATE_UNDEFINED;
                 }
                 componentsDict.Add(entry.Key, component);
                 // do something with entry.Value or entry.Key

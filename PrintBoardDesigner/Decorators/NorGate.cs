@@ -5,8 +5,13 @@ using System.Text;
 
 namespace PrintBoardDesigner
 {
-    public class NorGate : Gate
+    public class NorGateDecorator : GateDecorator
     {
+        public NorGateDecorator(Gate decoratedComponent) : base(decoratedComponent)
+        {
+            this.decoratedComponent = decoratedComponent;
+        }
+
         public override void CalculateState()
         {
             throw new NotImplementedException();
