@@ -10,12 +10,17 @@ namespace PrintBoardDesigner
         public string name;
         public List<CircuitComponent> outputs;
         public List<CircuitComponent> inputs;
-        public Boolean hasCurrent;
+        public States state;
+        public Char viewChar;
+
 
         public CircuitComponent()
         {
             this.outputs = new List<CircuitComponent>();
             this.inputs = new List<CircuitComponent>();
         }
+
+        public abstract void CalculateState();
+
     }
 }

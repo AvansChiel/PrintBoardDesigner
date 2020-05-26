@@ -5,8 +5,11 @@ using System.Text;
 
 namespace PrintBoardDesigner
 {
-    public class Wire : CircuitComponent
+    public enum States
     {
+        STATE_FALSE=0,
+        STATE_TRUE=1,
+        STATE_UNDEFINED=2
     }
 
 }

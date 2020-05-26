@@ -15,9 +15,9 @@ namespace PrintBoardDesigner
 
             this.AddComponentType("INPUT", typeof(InputNode));
             this.AddComponentType("PROBE", typeof(Probe));
-            this.AddComponentType("OR", typeof(OrGate));
-            this.AddComponentType("AND", typeof(AndGate));
-            this.AddComponentType("NOT", typeof(NotGate));
+            this.AddComponentType("OR", typeof(OrGateDecorator));
+            this.AddComponentType("AND", typeof(AndGateDecorator));
+            this.AddComponentType("NOT", typeof(NotGateDecorator));
         }
 
         public void AddComponentType(string name, Type type)

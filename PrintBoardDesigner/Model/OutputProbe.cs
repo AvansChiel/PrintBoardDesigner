@@ -7,5 +7,9 @@ namespace PrintBoardDesigner
 {
     public class Probe : Node
     {
+        public override void CalculateState()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
