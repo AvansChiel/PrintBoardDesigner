@@ -8,11 +8,11 @@ namespace PrintBoardDesigner
     public class MainController
     {
         private Circuit circuit;
-        private CircuitBuilder circuitBuilder;
+        //private CircuitBuilder circuitBuilder;
 
         public MainController()
         {
-            this.circuitBuilder = new CircuitBuilder();
+            //this.circuitBuilder = new CircuitBuilder();
         }
 
 
@@ -25,7 +25,11 @@ namespace PrintBoardDesigner
 
         public bool BuildCircuit(string fileLocation)
         {
-            Circuit circuit = circuitBuilder.BuildCircuit(fileLocation);
+            /// Build and retrieve the Circuit using the Builder Pattern
+            CircuitBuilder circuitBuilder = new CircuitBuilder();
+            circuitBuilder.PrepareCircuit(fileLocation);
+            Circuit circuit = circuitBuilder.GetPreparedCircuit();
+
             //TODO Validate circuit
 
             this.circuit = circuit;

@@ -12,11 +12,18 @@ namespace PrintBoardDesigner
         private CircuitParser circuitParser;
         private FileReader fileReader;
 
+        private Circuit preparedCircuit;
+
         public CircuitBuilder()
         {
             this.circuitComponentFactory = new CircuitComponentFactory();
             this.fileReader = new FileReader();
             this.circuitParser = new CircuitParser();
+        }
+
+        public Circuit GetPreparedCircuit()
+        {
+            return preparedCircuit;
         }
 
         //public CircuitComponentFactory CircuitComponentFactory
@@ -31,10 +38,8 @@ namespace PrintBoardDesigner
         //    set { circuitParser = value; }
         //}
 
-        public Circuit BuildCircuit(string fileLocation)
+        public void PrepareCircuit(string fileLocation)
         {
-            Console.WriteLine("beginbuild");
-
             List<string> fileLines = this.fileReader.ReadFile(fileLocation);
             this.circuitParser.ParseFile(fileLines);
             Dictionary<string, string> componentsStringsDict = this.circuitParser.CircuitComponentDict;
@@ -85,13 +90,9 @@ namespace PrintBoardDesigner
                 // do something with entry.Value or entry.Key
             }
 
-
-
-
-
-            Console.WriteLine("camehere");
             Circuit circuit = new Circuit(inputNodesList);
-            return circuit;
+
+            this.preparedCircuit = circuit;
         }
     }
 }
