@@ -9,8 +9,6 @@ namespace PrintBoardDesigner
     {
         public XorGateDecorator(Gate decoratedComponent) : base(decoratedComponent)
         {
-            this.decoratedComponent = decoratedComponent;
-
         }
 
         public override void CalculateState()

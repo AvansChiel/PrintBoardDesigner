@@ -28,9 +28,19 @@ namespace PrintBoardDesigner
         public CircuitComponent CreateCircuitComponent(string name, string type)
         {
             Type t = _types[type];
-            CircuitComponent c = (CircuitComponent)Activator.CreateInstance(t);
-            c.name = name;
-            return c;
+            if (type == "INPUT" || type == "PROBE" )
+            {
+
+                CircuitComponent c = (CircuitComponent)Activator.CreateInstance(t);
+                c.name = name;
+                return c;
+            }
+            else
+            {
+                CircuitComponent c = (CircuitComponent)Activator.CreateInstance(t, new NandGate());
+                c.name = name;
+                return c;
+            }
         }
 
         public bool DictionaryHasType(string type)

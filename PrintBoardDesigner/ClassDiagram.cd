@@ -83,21 +83,12 @@
   <Class Name="PrintBoardDesigner.MainController">
     <Position X="8.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAAEAAAAEAAAARAAAAEIAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAARAAEAAIAAAAAAAAAAAA=</HashCode>
       <FileName>Controller\MainController.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="GuiController" />
       <Property Name="Circuit" />
-      <Property Name="CircuitBuilder" />
     </ShowAsAssociation>
-  </Class>
-  <Class Name="PrintBoardDesigner.GuiController">
-    <Position X="11.75" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
-      <FileName>Controller\GuiController.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.Circuit">
     <Position X="8.75" Y="3" Width="1.5" />
@@ -116,20 +107,16 @@
   <Class Name="PrintBoardDesigner.CircuitParser">
     <Position X="0.5" Y="1" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAQEAAAABAAAAIAABACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAEAAAABAAAAIAABBCAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controller\CircuitParser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.CircuitBuilder">
     <Position X="5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAABCAAAAAIIAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAEAAAAACAAAAAAIAA=</HashCode>
       <FileName>Controller\CircuitBuilder.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="CircuitComponentFactory" />
-      <Property Name="CircuitParser" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="PrintBoardDesigner.GateDecorator">
     <Position X="5" Y="9.25" Width="1.5" />

@@ -9,7 +9,6 @@ namespace PrintBoardDesigner
     {
         public AndGateDecorator(Gate decoratedComponent) : base(decoratedComponent)
         {
-            this.decoratedComponent = decoratedComponent;
         }
 
         public override void CalculateState()
