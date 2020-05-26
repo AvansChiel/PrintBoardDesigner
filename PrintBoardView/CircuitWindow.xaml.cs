@@ -41,31 +41,8 @@ namespace PrintBoardView
             for (int i = 0; i < circuit.InputNodes.Count; i++)
             {
                 CircuitComponent node = circuit.InputNodes[i];
-                switch (node.GetType().Name.ToString())
-                {
-                    case "InputNode":
-                        CreateInput(node, i);
-                        break;
-                    default:
-                        break;
-                }
+                CreateInput(node, i);
             }
-
-            // Add a "Hello World!" text element to the Canvas
-            //TextBlock txt1 = new TextBlock();
-            //txt1.FontSize = 14;
-            //txt1.Text = "Hello World!";
-            //Canvas.SetTop(txt1, 100);
-            //Canvas.SetLeft(txt1, 10);
-            //myCanvas.Children.Add(txt1);
-
-            // Add a second text element to show how absolute positioning works in a Canvas
-            //TextBlock txt2 = new TextBlock();
-            //txt2.FontSize = 22;
-            //txt2.Text = "Isn't absolute positioning handy?";
-            //Canvas.SetTop(txt2, 200);
-            //Canvas.SetLeft(txt2, 75);
-            //circuitCanvas.Children.Add(txt2);
 
             this.Content = circuitCanvas;
             this.Show();
@@ -92,6 +69,22 @@ namespace PrintBoardView
 
             circuitCanvas.Children.Add(e1);
             circuitCanvas.Children.Add(t1);
+
+            ////
+            //bool isGate = true;
+            //List<CircuitComponent> outputs = component.outputs;
+            //while (isGate)
+            //{
+            //    foreach (var comp in outputs)
+            //    {
+            //        outputs = comp.outputs
+            //    }
+            //}
+        }
+
+        private void CreateGate(CircuitComponent component, int iterator)
+        {
+
         }
     }
 }

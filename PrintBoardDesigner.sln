@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintBoardDesigner", "Print
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintBoardView", "PrintBoardView\PrintBoardView.csproj", "{108C4423-5C94-4131-ACE8-95772804D22C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintBoardTests", "PrintBoardTests\PrintBoardTests.csproj", "{44F2AD6A-778B-4DB9-BBA5-9FB3F2AC7F5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{108C4423-5C94-4131-ACE8-95772804D22C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{108C4423-5C94-4131-ACE8-95772804D22C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{108C4423-5C94-4131-ACE8-95772804D22C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44F2AD6A-778B-4DB9-BBA5-9FB3F2AC7F5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F2AD6A-778B-4DB9-BBA5-9FB3F2AC7F5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F2AD6A-778B-4DB9-BBA5-9FB3F2AC7F5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F2AD6A-778B-4DB9-BBA5-9FB3F2AC7F5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

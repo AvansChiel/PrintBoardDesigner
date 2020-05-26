@@ -8,13 +8,6 @@ namespace PrintBoardDesigner
 {
     public class FileReader
     {
-        //Default file. MAKE SURE TO CHANGE THIS LOCATION AND FILE PATH TO YOUR FILE   
-        //static readonly string textFile = @"D:\Github\PrintDesigner\Circuit1_FullAdder.txt";
-
-        public FileReader()
-        {
-        }
-
         public List<string> ReadFile(string fileLocation)
         {
             List<string> fileLines = new List<string>();

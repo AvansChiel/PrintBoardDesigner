@@ -11,7 +11,6 @@ namespace PrintBoardDesigner
         public List<CircuitComponent> outputs;
         public List<CircuitComponent> inputs;
         public Boolean hasCurrent;
-        public Char viewChar;
 
         public CircuitComponent()
         {

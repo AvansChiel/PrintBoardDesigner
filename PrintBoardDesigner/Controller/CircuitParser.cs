@@ -11,6 +11,7 @@ namespace PrintBoardDesigner
     {
         private static string[] NodeDescriptors = new string[] { "INPUT_HIGH", "INPUT_LOW", "PROBE", "OR", "AND", "NOT", "NAND", "NOR", "XOR" };
 
+        //TODO Deze weghalen en teruggeven met ParseFile
         private Dictionary<string, string> circuitComponentDict = new Dictionary<string, string>();
         private Dictionary<string, string[]> circuitConnectionDict = new Dictionary<string, string[]>();
 

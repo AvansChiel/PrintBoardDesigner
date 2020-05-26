@@ -22,11 +22,6 @@ namespace PrintBoardDesigner
             set { circuit = value; }
         }
 
-        //public CircuitBuilder CircuitBuilder
-        //{
-        //    get { return circuitBuilder; }
-        //    set { circuitBuilder = value; }
-        //}
 
         public bool BuildCircuit(string fileLocation)
         {
