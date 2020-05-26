@@ -9,7 +9,10 @@ namespace PrintBoardDesigner
     {
         public override void CalculateState()
         {
-            throw new NotImplementedException();
+            foreach(var next in this.outputs)
+            {
+                next.CalculateState();
+            }
         }
     }
 }

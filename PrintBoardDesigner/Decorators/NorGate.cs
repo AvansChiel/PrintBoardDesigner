@@ -17,6 +17,11 @@ namespace PrintBoardDesigner
 
             foreach(var prev in this.decoratedComponent.inputs)
             {
+                if (prev.state == States.STATE_UNDEFINED)
+                {
+                    return;
+                }
+
                 var comp = new NandGate();
 
                 comp.inputs.Add(prev);

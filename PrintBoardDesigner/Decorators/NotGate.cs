@@ -18,6 +18,10 @@ namespace PrintBoardDesigner
             {
     
                 var tempInput = this.decoratedComponent.inputs[0].state;
+                if (tempInput == States.STATE_UNDEFINED)
+                {
+                    return;
+                }
                 this.decoratedComponent.inputs = new List<CircuitComponent>();
 
                 var prevComp = new NotGateDecorator(new NandGate());

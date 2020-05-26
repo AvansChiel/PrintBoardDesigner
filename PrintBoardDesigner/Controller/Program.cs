@@ -15,6 +15,7 @@ namespace PrintBoardDesigner
 
             //mc.init();
 
+
             #region Orgate
             //inputs
             Console.WriteLine("----start OrGate-----");

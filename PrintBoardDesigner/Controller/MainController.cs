@@ -25,7 +25,7 @@ namespace PrintBoardDesigner
 
         public bool BuildCircuit(string fileLocation)
         {
-            /// Build and retrieve the Circuit using the Builder Pattern
+            /// Build and retrieve the Circuit using the Prepared Builder Pattern
             CircuitBuilder circuitBuilder = new CircuitBuilder();
             circuitBuilder.PrepareCircuit(fileLocation);
             Circuit circuit = circuitBuilder.GetPreparedCircuit();
@@ -33,7 +33,16 @@ namespace PrintBoardDesigner
             //TODO Validate circuit
 
             this.circuit = circuit;
+            StartCircuitLoop();
             return true;
+        }
+
+        public void StartCircuitLoop()
+        {
+            foreach(var input in this.circuit.InputNodes)
+            {
+                input.CalculateState();
+            }
         }
 
         public void init() //TODO Dit moet weg. Dit is het pakketje dat wordt gebruikt door de VIEW. Zelf dus niet uitvoerbaar.

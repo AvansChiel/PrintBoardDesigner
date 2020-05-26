@@ -17,6 +17,10 @@ namespace PrintBoardDesigner
             ///create a nand gate for each input
             foreach(var prev in this.decoratedComponent.inputs)
             {
+                if(prev.state == States.STATE_UNDEFINED)
+                {
+                    return;
+                }
                 var comp = new NandGate();
                 ///inputs should both be the same for each gate
                 comp.inputs.Add(prev);
@@ -28,9 +32,10 @@ namespace PrintBoardDesigner
                 results.Add((int)comp.state);
             }
 
+          
             //clear list so the link does not get interupted (will get restored later in base)
             this.decoratedComponent.inputs = new List<CircuitComponent>();
-            foreach(var result in results)
+            foreach (var result in results)
             {
                 //create fake inputs for decorated component
                 var prevComp = new NotGateDecorator(new NandGate());
@@ -42,6 +47,7 @@ namespace PrintBoardDesigner
 
             //calculate state using fake inputs
             base.CalculateState();
+            
 
         }
 

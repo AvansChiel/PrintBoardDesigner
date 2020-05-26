@@ -13,12 +13,14 @@ namespace PrintBoardDesigner
 
         public override void CalculateState()
         {
-            
-
             var comp = new NandGate();
 
             foreach(var prev in this.decoratedComponent.inputs)
             {
+                if(prev.state == States.STATE_UNDEFINED)
+                {
+                    return;
+                }
                 comp.inputs.Add(prev);
             }
 

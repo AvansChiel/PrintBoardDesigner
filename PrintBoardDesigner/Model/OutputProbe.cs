@@ -9,7 +9,7 @@ namespace PrintBoardDesigner
     {
         public override void CalculateState()
         {
-            throw new NotImplementedException();
+            this.state = this.inputs[0].state;
         }
     }
 }

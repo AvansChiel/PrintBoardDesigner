@@ -16,6 +16,10 @@ namespace PrintBoardDesigner
 
             var inputA = this.decoratedComponent.inputs[0];
             var inputB = this.decoratedComponent.inputs[1];
+            if (inputA.state == States.STATE_UNDEFINED || inputB.state == States.STATE_UNDEFINED)
+            {
+                return;
+            }
 
             var firstNand = new NandGate();
 
