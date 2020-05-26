@@ -16,58 +16,65 @@ namespace PrintBoardDesigner
             //mc.init();
 
             #region Orgate
-            ////inputs
-            //OrGateDecorator orGate1 = new OrGateDecorator(new NandGate());
-            //OrGateDecorator orGate2 = new OrGateDecorator(new NandGate());
+            //inputs
+            Console.WriteLine("----start OrGate-----");
 
-            //orGate1.state = States.STATE_FALSE;
-            //orGate2.state = States.STATE_TRUE;
+            OrGateDecorator orGate1 = new OrGateDecorator(new NandGate());
+            OrGateDecorator orGate2 = new OrGateDecorator(new NandGate());
 
-            ////calctest
-            //OrGateDecorator orGate = new OrGateDecorator(new NandGate());
+            orGate1.state = States.STATE_FALSE;
+            orGate2.state = States.STATE_TRUE;
 
-            //orGate.state = States.STATE_UNDEFINED;
-            //Console.WriteLine(orGate.state.ToString());
+            //calctest
+            OrGateDecorator orGate = new OrGateDecorator(new NandGate());
+
+            orGate.state = States.STATE_UNDEFINED;
+            Console.WriteLine(orGate.state.ToString());
 
 
-            //orGate.inputs.Add(orGate1);
-            //orGate.inputs.Add(orGate2);
+            orGate.inputs.Add(orGate1);
+            orGate.inputs.Add(orGate2);
 
-            //orGate.CalculateState();
+            orGate.CalculateState();
 
-            //Console.WriteLine(orGate.state.ToString());
-            //Console.ReadKey();
+            Console.WriteLine(orGate.state.ToString());
+            Console.WriteLine("----end OrGate-----");
+            Console.ReadKey();
+
             #endregion
 
             #region AndGate
-            ////inputs
-            //AndGateDecorator andGate1 = new AndGateDecorator(new NandGate());
-            //AndGateDecorator andGate2 = new AndGateDecorator(new NandGate());
+            //inputs
+            Console.WriteLine("----start AndGate-----");
+            AndGateDecorator andGate1 = new AndGateDecorator(new NandGate());
+            AndGateDecorator andGate2 = new AndGateDecorator(new NandGate());
 
-            //andGate1.state = States.STATE_FALSE;
-            //andGate2.state = States.STATE_FALSE;
+            andGate1.state = States.STATE_FALSE;
+            andGate2.state = States.STATE_FALSE;
 
-            ////calctest
-            //AndGateDecorator andGate = new AndGateDecorator(new NandGate());
+            //calctest
+            AndGateDecorator andGate = new AndGateDecorator(new NandGate());
 
-            //andGate.state = States.STATE_UNDEFINED;
-            //Console.WriteLine(andGate.state.ToString());
+            andGate.state = States.STATE_UNDEFINED;
+            Console.WriteLine(andGate.state.ToString());
 
 
-            //andGate.inputs.Add(andGate1);
-            //andGate.inputs.Add(andGate2);
+            andGate.inputs.Add(andGate1);
+            andGate.inputs.Add(andGate2);
 
-            //andGate.CalculateState();
+            andGate.CalculateState();
 
-            //Console.WriteLine(andGate.state.ToString());
-            //Console.ReadKey();
+            Console.WriteLine(andGate.state.ToString());
+            Console.WriteLine("----end AndGate-----");
+            Console.ReadKey();
             #endregion
 
             #region NotGate
             //inputs
+            Console.WriteLine("----start NotGate-----");
             NotGateDecorator notGate1 = new NotGateDecorator(new NandGate());
 
-            notGate1.state = States.STATE_TRUE;
+            notGate1.state = States.STATE_FALSE;
 
             //calctest
             NotGateDecorator notGate = new NotGateDecorator(new NandGate());
@@ -81,9 +88,61 @@ namespace PrintBoardDesigner
             notGate.CalculateState();
 
             Console.WriteLine(notGate.state.ToString());
+            Console.WriteLine("----End NotGate-----");
             Console.ReadKey();
             #endregion
 
+            #region NorGate
+            Console.WriteLine("----start NorGate-----");
+            NorGateDecorator norGate1 = new NorGateDecorator(new NandGate());
+            NorGateDecorator norGate2 = new NorGateDecorator(new NandGate());
+
+            norGate1.state = States.STATE_TRUE;
+            norGate2.state = States.STATE_FALSE;
+
+            //calctest
+            NorGateDecorator norGate = new NorGateDecorator(new NandGate());
+
+
+            norGate.state = States.STATE_UNDEFINED;
+            Console.WriteLine(norGate.state.ToString());
+
+
+            norGate.inputs.Add(notGate1);
+            norGate.inputs.Add(norGate2);
+
+            norGate.CalculateState();
+
+            Console.WriteLine(norGate.state.ToString());
+            Console.WriteLine("----End NorGate-----");
+            Console.ReadKey();
+            #endregion
+
+            #region XorGate
+            Console.WriteLine("----start XorGate-----");
+            XorGateDecorator xorGate1 = new XorGateDecorator(new NandGate());
+            XorGateDecorator xorGate2 = new XorGateDecorator(new NandGate());
+
+            xorGate1.state = States.STATE_TRUE;
+            xorGate2.state = States.STATE_TRUE;
+
+            //calctest
+            XorGateDecorator xorGate = new XorGateDecorator(new NandGate());
+
+
+            xorGate.state = States.STATE_UNDEFINED;
+            Console.WriteLine(xorGate.state.ToString());
+
+
+            xorGate.inputs.Add(xorGate1);
+            xorGate.inputs.Add(xorGate2);
+
+            xorGate.CalculateState();
+
+            Console.WriteLine(xorGate.state.ToString());
+            Console.WriteLine("----End XorGate-----");
+            Console.ReadKey();
+            #endregion
 
 
         }

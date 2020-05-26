@@ -14,7 +14,35 @@ namespace PrintBoardDesigner
 
         public override void CalculateState()
         {
-            throw new NotImplementedException();
+            var results = new List<int>();
+
+            foreach(var prev in this.decoratedComponent.inputs)
+            {
+                var comp = new NandGate();
+
+                comp.inputs.Add(prev);
+                comp.inputs.Add(prev);
+
+                comp.CalculateState();
+
+                results.Add((int)comp.state);
+            }
+
+            var secComp = new NandGate();
+            foreach(var result in results)
+            {
+                var prevComp = new NotGateDecorator(new NandGate());
+                prevComp.state = (States)result;
+                secComp.inputs.Add(prevComp);
+            }
+
+            secComp.CalculateState();
+            this.decoratedComponent.inputs = new List<CircuitComponent>();
+            this.decoratedComponent.inputs.Add(secComp);
+            this.decoratedComponent.inputs.Add(secComp);
+
+            base.CalculateState();
+
         }
     }
 }
