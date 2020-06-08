@@ -26,6 +26,10 @@ namespace PrintBoardDesigner
                     file.Close();
                 }
             }
+            else
+            {
+                throw new ArgumentException("File does not exist");
+            }
 
             return fileLines;
 
