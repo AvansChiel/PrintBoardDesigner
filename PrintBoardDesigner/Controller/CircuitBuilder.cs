@@ -89,10 +89,94 @@ namespace PrintBoardDesigner
                 
                 // do something with entry.Value or entry.Key
             }
+            if(ContainsDisconnectedComponent(componentsDict))
+            {
+                throw new ArgumentException("File contains disconnected components");
+            }
+
+            CheckForInifinteLoop(inputNodesList);
 
             Circuit circuit = new Circuit(inputNodesList);
 
             this.preparedCircuit = circuit;
         }
+
+        private void CheckForInifinteLoop(List<CircuitComponent> inputNodeList)
+        {
+            foreach (CircuitComponent inputNode in inputNodeList)
+            {
+
+                List<CircuitComponent> roundList = new List<CircuitComponent>();
+                roundList.Add(inputNode);
+                this.RecursivelyCheckOutputs(inputNode, roundList);
+            }
+        }
+
+        private void RecursivelyCheckOutputs(CircuitComponent component, List<CircuitComponent> roundList)
+        {
+            foreach (CircuitComponent comp in component.outputs)
+            {
+                if (roundList.Contains(comp))
+                {
+                    throw new ArgumentException("File contains inifinte loop");
+                }
+                List<CircuitComponent> newList = new List<CircuitComponent>();
+                foreach(var item in roundList)
+                {
+                    newList.Add(item);
+                }
+                newList.Add(comp);
+ 
+                this.RecursivelyCheckOutputs(comp, newList);
+            }
+        }
+
+        private bool ContainsDisconnectedComponent(Dictionary<string, CircuitComponent> componentsDict)
+        {
+            foreach(KeyValuePair<string, CircuitComponent> entry in componentsDict)
+            {
+                var component = entry.Value;
+                var id = entry.Key;
+                /// Check for Dead End
+                if (component.outputs.Count <= 0)
+                {
+                    if (component.GetType() != typeof(Probe))
+                    {
+                        return true;
+                    }
+                }
+                /// Check for Dead Start
+                if(component.inputs.Count <= 0)
+                {
+                    if(component.GetType() != typeof(InputNode))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        //private void ValidateCircuit()
+        //{
+        //    List<CircuitComponent> nodes = new List<CircuitComponent>();
+        //    foreach (var node in preparedCircuit.InputNodes)
+        //    {
+        //        CircuitComponent inputNode = node;
+        //        nodes.Add(inputNode);
+
+        //        var currentNode = inputNode.outputs[0];
+        //        while (currentNode.outputs.Count > 0)
+        //        {
+        //            for (int i = 0; i < currentNode.outputs.Count; i++)
+        //            {
+        //                nodes.Add(currentNode);
+        //                currentNode = currentNode.outputs[i];
+        //            }
+        //        }
+
+        //    }
+        //}
+
     }
 }
