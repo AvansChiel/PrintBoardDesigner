@@ -1,4 +1,5 @@
 ﻿using PrintBoardDesigner;
+using PrintBoardView.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,9 @@ namespace PrintBoardView
 
         List<List<CircuitComponent>> gates;
         List<CircuitComponent> probes;
+        List<CircuitComponentDrawing> drawingList;
+
+   
 
         public CircuitWindow(MainController mainController)
         {
@@ -36,6 +40,7 @@ namespace PrintBoardView
             this.circuit = mainController.Circuit;
             this.gates = new List<List<CircuitComponent>>();
             this.probes = new List<CircuitComponent>();
+            this.drawingList = new List<CircuitComponentDrawing>();
             PaintWindow();
         }
         private void PaintWindow()
@@ -63,6 +68,7 @@ namespace PrintBoardView
             this.logStuff();
             
             this.addGatesToCanvas();
+            this.DrawLines();
             this.Content = circuitCanvas;
             this.Show();
         }
@@ -127,8 +133,52 @@ namespace PrintBoardView
             {
                 for(int j = 0; j < this.gates[i].Count; j++)
                 {
-                        CreateNode(this.gates[i][j], i, j);
+                    CreateNode(this.gates[i][j], i, j);
+                    
                 }
+            }
+        }
+
+        private void DrawLines()
+        {
+           
+            foreach (var item in this.drawingList)
+            {
+                
+                foreach(var output in item.Component.outputs)
+                {
+
+                    int lineStartX = item.X + 10;
+                    int lineStartY = item.Y + 10;
+
+                    int lineEndX = 0;
+                    int lineEndY = 0;
+                    foreach (var drawing in this.drawingList)
+                    {
+                        if(output == drawing.Component)
+                        {
+                            lineEndX = drawing.X + 10;
+                            lineEndY = drawing.Y + 10;
+                            break;
+                        }
+                    }
+                    Line line = new Line();
+
+                    line.Stroke = Brushes.Black;
+
+                    line.X1 = lineStartX;
+                    line.X2 = lineEndX;
+                    line.Y1 = lineStartY;
+                    line.Y2 = lineEndY;
+
+                    line.MouseEnter += (s, e) => line.Stroke = Brushes.Red;
+                    line.MouseLeave += (s, e) => line.Stroke = Brushes.Black;
+
+                    line.StrokeThickness = 4;
+                    circuitCanvas.Children.Add(line);
+                    //draw line between coords
+                }
+
             }
         }
 
@@ -137,6 +187,12 @@ namespace PrintBoardView
 
             int left = (80 * (xIterator + 1));
             int top = (80 * (yIterator + 1));
+
+            CircuitComponentDrawing cDrawing = new CircuitComponentDrawing(component, left, top);
+            drawingList.Add(cDrawing);
+
+            //save in object
+            //add object to array
 
             Ellipse e1 = new Ellipse();
             e1.Height = e1.Width = CircleRadius;
@@ -157,6 +213,9 @@ namespace PrintBoardView
             circuitCanvas.Children.Add(t1);
 
         }
+
+
+       
 
 
     }
