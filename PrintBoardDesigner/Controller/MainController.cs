@@ -30,8 +30,6 @@ namespace PrintBoardDesigner
             circuitBuilder.PrepareCircuit(fileLocation);
             Circuit circuit = circuitBuilder.GetPreparedCircuit();
 
-            //TODO Validate circuit
-
             this.circuit = circuit;
             StartCircuitLoop();
             return true;

@@ -26,18 +26,6 @@ namespace PrintBoardDesigner
             return preparedCircuit;
         }
 
-        //public CircuitComponentFactory CircuitComponentFactory
-        //{
-        //    get { return circuitComponentFactory; }
-        //    set { circuitComponentFactory = value; }
-        //}
-
-        //public CircuitParser CircuitParser
-        //{
-        //    get { return circuitParser; }
-        //    set { circuitParser = value; }
-        //}
-
         public void PrepareCircuit(string fileLocation)
         {
             List<string> fileLines = this.fileReader.ReadFile(fileLocation);
