@@ -25,11 +25,15 @@ namespace PrintBoardView
         MainController mainController;
         Circuit circuit;
         Canvas circuitCanvas;
+
+        List<List<CircuitComponent>> gates;
+
         public CircuitWindow(MainController mainController)
         {
             InitializeComponent();
             this.mainController = mainController;
             this.circuit = mainController.Circuit;
+            this.gates = new List<List<CircuitComponent>>();
             PaintWindow();
         }
         private void PaintWindow()
@@ -38,17 +42,48 @@ namespace PrintBoardView
             circuitCanvas = new Canvas();
             circuitCanvas.Background = Brushes.LightSteelBlue;
 
+
+            //take node
+            //for each output do the same
+            this.gates[0] = new List<CircuitComponent>();
+            
             for (int i = 0; i < circuit.InputNodes.Count; i++)
             {
                 CircuitComponent node = circuit.InputNodes[i];
-                CreateInput(node, i);
+                this.gates[0].Add(node);
+
+                recursiveTestMethod(node, 1);
+
             }
 
             this.Content = circuitCanvas;
             this.Show();
         }
 
-        private void CreateInput(CircuitComponent component, int iterator)
+        private void recursiveTestMethod(CircuitComponent circuitComponent, int passedThroughTimes) 
+        {
+            this.gates[passedThroughTimes] = new List<CircuitComponent>();
+            foreach(CircuitComponent output in circuitComponent.outputs)
+            {
+                this.gates[passedThroughTimes].Add(output);
+                this.recursiveTestMethod(output, passedThroughTimes + 1);
+            }
+
+        }
+
+        private bool isPresent(CircuitComponent component)
+        {
+            foreach (var gatesList in gates)
+            {
+                if(gatesList.Contains(component))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void CreateNode(CircuitComponent component, int iterator)
         {
             int top = 100 + (50 * (iterator + 1));
 
@@ -84,7 +119,25 @@ namespace PrintBoardView
 
         private void CreateGate(CircuitComponent component, int iterator)
         {
+            int top = (50 * (iterator + 1));
 
+            Ellipse e1 = new Ellipse();
+            e1.Height = e1.Width = CircleRadius;
+            e1.ToolTip = component.name;
+            e1.Fill = Brushes.Black;
+
+            TextBlock t1 = new TextBlock();
+            t1.FontSize = 14;
+            t1.Text = component.name;
+
+            Canvas.SetTop(e1, top);
+            Canvas.SetTop(t1, top + 20);
+
+            Canvas.SetLeft(e1, 40 * (iterator + 1));
+            Canvas.SetLeft(t1, 45 * (iterator + 1));
+
+            circuitCanvas.Children.Add(e1);
+            circuitCanvas.Children.Add(t1);
         }
     }
 }
