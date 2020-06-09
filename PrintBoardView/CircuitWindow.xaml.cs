@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -30,6 +31,8 @@ namespace PrintBoardView
         List<List<CircuitComponent>> gates;
         List<CircuitComponent> probes;
         List<CircuitComponentDrawing> drawingList;
+        System.Windows.Controls.Button resetButton;
+
 
    
 
@@ -41,13 +44,28 @@ namespace PrintBoardView
             this.gates = new List<List<CircuitComponent>>();
             this.probes = new List<CircuitComponent>();
             this.drawingList = new List<CircuitComponentDrawing>();
+
+            PaintWindow();
+           
+
+        }
+
+        void resetCircuit(object sender, RoutedEventArgs e)
+        {
+            // reset circuit.
+        }
+
+        private void OnTimerEvent(object sender, EventArgs e)
+        {
             PaintWindow();
         }
+
         private void PaintWindow()
         {
             // Create a canvas sized to fill the window
             circuitCanvas = new Canvas();
             circuitCanvas.Background = Brushes.LightSteelBlue;
+            //circuitCanvas.Height = this.Height - 50;
 
 
             //take node
@@ -69,9 +87,12 @@ namespace PrintBoardView
             
             this.addGatesToCanvas();
             this.DrawLines();
+            this.addButtons();
             this.Content = circuitCanvas;
+
             this.Show();
         }
+
 
         private void logStuff()
         {
@@ -164,7 +185,14 @@ namespace PrintBoardView
                     }
                     Line line = new Line();
 
-                    line.Stroke = Brushes.Black;
+                    var normalStroke = Brushes.Black;
+
+                    if (item.Component.state == States.STATE_TRUE)
+                    {
+                        normalStroke = Brushes.Green;
+                    }
+
+                    line.Stroke = normalStroke;
 
                     line.X1 = lineStartX;
                     line.X2 = lineEndX;
@@ -172,7 +200,7 @@ namespace PrintBoardView
                     line.Y2 = lineEndY;
 
                     line.MouseEnter += (s, e) => line.Stroke = Brushes.Red;
-                    line.MouseLeave += (s, e) => line.Stroke = Brushes.Black;
+                    line.MouseLeave += (s, e) => line.Stroke = normalStroke;
 
                     line.StrokeThickness = 4;
                     circuitCanvas.Children.Add(line);
@@ -191,17 +219,47 @@ namespace PrintBoardView
             CircuitComponentDrawing cDrawing = new CircuitComponentDrawing(component, left, top);
             drawingList.Add(cDrawing);
 
+           
+            
             //save in object
             //add object to array
 
             Ellipse e1 = new Ellipse();
             e1.Height = e1.Width = CircleRadius;
             e1.ToolTip = component.name;
-            e1.Fill = Brushes.Black;
+            if(component.state == States.STATE_TRUE)
+            {
+                e1.Fill = Brushes.Green;
+            }
+            else
+            {
+                e1.Fill = Brushes.Black;
+            }
+            
+            e1.Name = component.name;
+
 
             TextBlock t1 = new TextBlock();
             t1.FontSize = 14;
             t1.Text = component.name;
+
+            if (xIterator == 0)
+            {
+                e1.MouseUp += (s, e) =>
+                {
+                    if (component.state != States.STATE_TRUE)
+                    {
+                        component.state = States.STATE_TRUE;
+                        component.CalculateState();
+                    }
+                    else
+                    {
+                        component.state = States.STATE_FALSE;
+                        component.CalculateState();
+                    }
+                    redrawCanvasWithExistingData();
+                };
+            }
 
             Canvas.SetTop(e1, top);
             Canvas.SetTop(t1, top + 20);
@@ -213,6 +271,39 @@ namespace PrintBoardView
             circuitCanvas.Children.Add(t1);
 
         }
+
+        private void redrawCanvasWithExistingData()
+        {
+            circuitCanvas = new Canvas();
+            circuitCanvas.Background = Brushes.LightSteelBlue;
+
+            this.addGatesToCanvas();
+            this.DrawLines();
+
+            this.addButtons();
+
+            this.Content = circuitCanvas;
+            this.Show();
+        }
+
+        private void addButtons()
+        {
+            resetButton = new System.Windows.Controls.Button();
+            resetButton.Content = "reset";
+            resetButton.Click += resetCircuit;
+            this.circuitCanvas.Children.Add(resetButton);
+        }
+
+
+        //private void toggleState(object sender, MouseButtonEventArgs e)
+        //{
+        //    //foreach(CircuitComponentDrawing comp in drawingList)
+        //    //{
+        //    //    if
+        //    //}
+        //    Console.WriteLine(sender);
+        //    Console.WriteLine(e);
+        //}
 
 
        

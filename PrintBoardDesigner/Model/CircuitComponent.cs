@@ -11,7 +11,6 @@ namespace PrintBoardDesigner
         public List<CircuitComponent> outputs;
         public List<CircuitComponent> inputs;
         public States state;
-        public Char viewChar;
 
 
         public CircuitComponent()

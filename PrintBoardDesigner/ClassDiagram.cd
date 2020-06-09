@@ -17,7 +17,7 @@
   <Class Name="PrintBoardDesigner.OrGateDecorator">
     <Position X="6.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Decorators\OrGate.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -52,7 +52,7 @@
   <Class Name="PrintBoardDesigner.CircuitComponent">
     <Position X="8.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAEABAEgAAAAAQAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEABAEgAAAAAQAAAA=</HashCode>
       <FileName>Model\CircuitComponent.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -86,7 +86,7 @@
   <Class Name="PrintBoardDesigner.Circuit">
     <Position X="8.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAFABAQBAAAEAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Circuit.cs</FileName>
     </TypeIdentifier>
   </Class>
