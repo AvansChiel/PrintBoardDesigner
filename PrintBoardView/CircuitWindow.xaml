@@ -6,4 +6,5 @@
         xmlns:local="clr-namespace:PrintBoardView"
         mc:Ignorable="d"
         Title="CircuitView" Height="450" Width="800">
+    
 </Window>
