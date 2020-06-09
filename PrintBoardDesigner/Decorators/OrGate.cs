@@ -51,15 +51,5 @@ namespace PrintBoardDesigner
 
         }
 
-        public void StartNextComponents()
-        {
-            if(this.outputs != null && this.outputs.Count > 0)
-            {
-                foreach(CircuitComponent output in this.outputs)
-                {
-                    output.CalculateState();
-                }
-            }
-        }
     }
 }
