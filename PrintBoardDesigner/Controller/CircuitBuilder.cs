@@ -28,8 +28,11 @@ namespace PrintBoardDesigner
 
         public void PrepareCircuit(string fileLocation)
         {
+            /// Read File
             List<string> fileLines = this.fileReader.ReadFile(fileLocation);
+            /// Parse File
             this.circuitParser.ParseFile(fileLines);
+            /// Get Dictionaries from parser
             Dictionary<string, string> componentsStringsDict = this.circuitParser.CircuitComponentDict;
             Dictionary<string, string[]> connectionsStringsDict = this.circuitParser.CircuitConnectionDict;
 

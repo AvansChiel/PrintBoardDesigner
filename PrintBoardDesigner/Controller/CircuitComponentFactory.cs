@@ -12,14 +12,7 @@ namespace PrintBoardDesigner
         private Dictionary<string, Type> _types = new Dictionary<string, Type>();
         public CircuitComponentFactory()
         {
-            // _types = new Dictionary<string, Type>();
             this.Initialize();
-
-            //this.AddComponentType("INPUT", typeof(InputNode));
-            //this.AddComponentType("PROBE", typeof(Probe));
-            //this.AddComponentType("OR", typeof(OrGateDecorator));
-            //this.AddComponentType("AND", typeof(AndGateDecorator));
-            //this.AddComponentType("NOT", typeof(NotGateDecorator));
         }
 
         public void AddComponentType(string name, Type type)
@@ -29,6 +22,11 @@ namespace PrintBoardDesigner
 
         public CircuitComponent CreateCircuitComponent(string name, string type)
         {
+            if(!DictionaryHasType(type))
+            {
+                throw new ArgumentException("Invalid CircuitComponent Type: " + type);
+            }
+
             Type t = _types[type];
             if (type == "INPUT" || type == "PROBE" )
             {

@@ -43,5 +43,13 @@ namespace PrintBoardDesigner
         {
             throw new NotImplementedException();
         }
+
+        public static String Key
+        {
+            get
+            {
+                return "INPUTCOMPOSITE";
+            }
+        }
     }
 }

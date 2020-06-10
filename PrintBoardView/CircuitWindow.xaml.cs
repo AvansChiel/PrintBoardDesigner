@@ -199,6 +199,8 @@ namespace PrintBoardView
                     line.Y1 = lineStartY;
                     line.Y2 = lineEndY;
 
+                    Canvas.SetZIndex(line, 1);
+
                     line.MouseEnter += (s, e) =>
                     {
                         Canvas.SetZIndex(line, 99);
@@ -227,8 +229,6 @@ namespace PrintBoardView
 
             CircuitComponentDrawing cDrawing = new CircuitComponentDrawing(component, left, top);
             drawingList.Add(cDrawing);
-
-           
             
             //save in object
             //add object to array
@@ -246,6 +246,7 @@ namespace PrintBoardView
             }
             
             e1.Name = component.name;
+            Canvas.SetZIndex(e1, 100);
 
 
             TextBlock t1 = new TextBlock();
@@ -269,6 +270,8 @@ namespace PrintBoardView
                     redrawCanvasWithExistingData();
                 };
             }
+
+            Canvas.SetZIndex(t1, 100);
 
             Canvas.SetTop(e1, top);
             Canvas.SetTop(t1, top + 20);
