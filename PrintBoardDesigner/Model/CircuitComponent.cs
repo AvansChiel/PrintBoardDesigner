@@ -11,8 +11,20 @@ namespace PrintBoardDesigner
         public int minInputs;
         public List<CircuitComponent> outputs;
         public List<CircuitComponent> inputs;
-        public States initialState;
+        protected States _initialState;
         public States state;
+
+        virtual public States InitialState
+        {
+            get
+            {
+                return this._initialState;
+            }
+            set
+            {
+                this._initialState = value;
+            }
+        }
 
         public abstract void Accept(IVisitor visitor);
 
@@ -21,7 +33,7 @@ namespace PrintBoardDesigner
         {
             this.outputs = new List<CircuitComponent>();
             this.inputs = new List<CircuitComponent>();
-            this.initialState = States.STATE_UNDEFINED;
+            this.InitialState = States.STATE_UNDEFINED;
         }
 
         public abstract void CalculateState();

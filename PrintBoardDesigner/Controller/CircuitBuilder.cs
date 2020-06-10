@@ -56,12 +56,12 @@ namespace PrintBoardDesigner
                     if (entry.Value.Contains("HIGH"))
                     {
                         component.state = States.STATE_TRUE;
-                        component.initialState = States.STATE_TRUE;
+                        component.InitialState = States.STATE_TRUE;
                     }
                     else
                     {
                         component.state = States.STATE_FALSE;
-                        component.initialState = States.STATE_FALSE;
+                        component.InitialState = States.STATE_FALSE;
 
                     }
                     inputNodesList.Add(component);

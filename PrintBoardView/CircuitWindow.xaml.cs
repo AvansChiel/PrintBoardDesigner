@@ -259,14 +259,16 @@ namespace PrintBoardView
             {
                 e1.MouseUp += (s, e) =>
                 {
-                    if (component.state != States.STATE_TRUE)
-                    {
-                        component.state = States.STATE_TRUE;
-                    }
-                    else
-                    {
-                        component.state = States.STATE_FALSE;
-                    }
+                    //if (component.state != States.STATE_TRUE)
+                    //{
+                    //    component.state = States.STATE_TRUE;
+                    //}
+                    //else
+                    //{
+                    //    component.state = States.STATE_FALSE;
+                    //}
+                    InputNode node = (InputNode)component;
+                    node.Request();
                     this.circuit.InputComposite.Activate();
                     redrawCanvasWithExistingData();
                 };
