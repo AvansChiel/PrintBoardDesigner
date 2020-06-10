@@ -47,6 +47,7 @@
     <Compile Include="Controller\FileReader.cs" />
     <Compile Include="GateDecorator.cs" />
     <Compile Include="Decorators\AndGate.cs" />
+    <Compile Include="InputComposite.cs" />
     <Compile Include="Model\Circuit.cs" />
     <Compile Include="Model\CircuitComponent.cs" />
     <Compile Include="Controller\CircuitComponentFactory.cs" />

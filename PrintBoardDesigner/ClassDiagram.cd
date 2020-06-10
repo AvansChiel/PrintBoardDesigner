@@ -50,7 +50,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.CircuitComponent">
-    <Position X="8.75" Y="6.25" Width="1.5" />
+    <Position X="8.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEABAEgAAAAAQAAAA=</HashCode>
       <FileName>Model\CircuitComponent.cs</FileName>
@@ -60,16 +60,16 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="PrintBoardDesigner.InputNode">
-    <Position X="11.25" Y="10.75" Width="1.5" />
+    <Position X="11.25" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAABAAAAABAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Model\InputProbe.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.Probe">
-    <Position X="13.25" Y="10.75" Width="1.5" />
+    <Position X="13.75" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAABAAAAABAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Model\OutputProbe.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -79,14 +79,11 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAEAAAABAIEAAIAAAAAAAAAAAA=</HashCode>
       <FileName>Controller\MainController.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Circuit" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="PrintBoardDesigner.Circuit">
-    <Position X="8.75" Y="3" Width="1.5" />
+    <Position X="13.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Circuit.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -124,10 +121,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.Node" Collapsed="true">
-    <Position X="11.25" Y="9.5" Width="1.5" />
+    <Position X="11.25" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAABAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrintBoardDesigner.InputComposite">
+    <Position X="14" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIQAAAAAAAAAABAAAAABAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>InputComposite.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="PrintBoardDesigner.States">

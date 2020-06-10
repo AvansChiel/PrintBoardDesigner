@@ -84,7 +84,13 @@ namespace PrintBoardDesigner
 
             CheckForInifinteLoop(inputNodesList);
 
-            Circuit circuit = new Circuit(inputNodesList);
+            InputComposite inputComposite = new InputComposite();
+            foreach(Node node in inputNodesList)
+            {
+                inputComposite.Add(node);
+            }
+
+            Circuit circuit = new Circuit(inputComposite);
 
             this.preparedCircuit = circuit;
         }

@@ -37,10 +37,11 @@ namespace PrintBoardDesigner
 
         public void StartCircuitLoop()
         {
-            foreach(var input in this.circuit.InputNodes)
-            {
-                input.CalculateState();
-            }
+            //foreach(var input in this.circuit.InputNodes)
+            //{
+            //    input.CalculateState();
+            //}
+            this.circuit.InputComposite.Activate();
         }
 
         public void init() //TODO Dit moet weg. Dit is het pakketje dat wordt gebruikt door de VIEW. Zelf dus niet uitvoerbaar.

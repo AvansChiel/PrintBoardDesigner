@@ -7,6 +7,21 @@ namespace PrintBoardDesigner
 {
     public class Probe : Node
     {
+        public override void Activate()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Add(Node c)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Remove(Node c)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void CalculateState()
         {
             this.state = this.inputs[0].state;

@@ -72,9 +72,9 @@ namespace PrintBoardView
             //for each output do the same
             this.gates.Add(new List<CircuitComponent>());
             
-            for (int i = 0; i < circuit.InputNodes.Count; i++)
+            for (int i = 0; i < circuit.InputComposite.getChildren().Count; i++)
             {
-                CircuitComponent node = circuit.InputNodes[i];
+                CircuitComponent node = circuit.InputComposite.getChildren()[i];
                 this.gates[0].Add(node);
                 recursiveTestMethod(node, 1);
 
@@ -199,8 +199,17 @@ namespace PrintBoardView
                     line.Y1 = lineStartY;
                     line.Y2 = lineEndY;
 
-                    line.MouseEnter += (s, e) => line.Stroke = Brushes.Red;
-                    line.MouseLeave += (s, e) => line.Stroke = normalStroke;
+                    line.MouseEnter += (s, e) =>
+                    {
+                        Canvas.SetZIndex(line, 99);
+                        line.Stroke = Brushes.Red;
+                    };
+
+                    line.MouseLeave += (s, e) =>
+                    {
+                        Canvas.SetZIndex(line, 1);
+                        line.Stroke = normalStroke;
+                    };
 
                     line.StrokeThickness = 4;
                     circuitCanvas.Children.Add(line);

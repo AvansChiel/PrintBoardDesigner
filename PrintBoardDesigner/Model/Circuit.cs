@@ -7,18 +7,20 @@ namespace PrintBoardDesigner
 {
     public class Circuit
     {
-        private List<CircuitComponent> inputNodes;
+        //private List<CircuitComponent> inputNodes;
 
-        public List<CircuitComponent> InputNodes
+        private InputComposite inputComposite;
+
+        public InputComposite InputComposite
         {
-            get { return inputNodes; }
-            set { inputNodes = value; }
+            get { return inputComposite; }
+            set { inputComposite = value; }
         }
 
 
-        public Circuit(List<CircuitComponent> inputNodes)
+        public Circuit(InputComposite inputComposite)
         {
-            this.inputNodes = inputNodes;
+            this.inputComposite = inputComposite;
         }
        
     }
