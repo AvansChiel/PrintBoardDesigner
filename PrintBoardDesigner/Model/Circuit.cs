@@ -11,6 +11,8 @@ namespace PrintBoardDesigner
 
         private InputComposite inputComposite;
 
+        public Components components;
+
         public InputComposite InputComposite
         {
             get { return inputComposite; }

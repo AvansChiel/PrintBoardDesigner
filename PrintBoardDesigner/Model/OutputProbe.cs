@@ -26,6 +26,11 @@ namespace PrintBoardDesigner
         {
             this.state = this.inputs[0].state;
         }
+
+        public override void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
         public static String Key
         {
             get

@@ -44,6 +44,11 @@ namespace PrintBoardDesigner
             throw new NotImplementedException();
         }
 
+        public override void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
         public static String Key
         {
             get

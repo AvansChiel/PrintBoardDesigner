@@ -52,7 +52,9 @@ namespace PrintBoardView
 
         void resetCircuit(object sender, RoutedEventArgs e)
         {
-            // reset circuit.
+            this.circuit.components.Accept(new ResetVisitor());
+            this.circuit.InputComposite.Activate();
+            this.redrawCanvasWithExistingData();
         }
 
         private void OnTimerEvent(object sender, EventArgs e)
@@ -203,7 +205,7 @@ namespace PrintBoardView
 
                     line.MouseEnter += (s, e) =>
                     {
-                        Canvas.SetZIndex(line, 99);
+                        Canvas.SetZIndex(line, 101);
                         line.Stroke = Brushes.Red;
                     };
 
@@ -260,13 +262,12 @@ namespace PrintBoardView
                     if (component.state != States.STATE_TRUE)
                     {
                         component.state = States.STATE_TRUE;
-                        component.CalculateState();
                     }
                     else
                     {
                         component.state = States.STATE_FALSE;
-                        component.CalculateState();
                     }
+                    this.circuit.InputComposite.Activate();
                     redrawCanvasWithExistingData();
                 };
             }

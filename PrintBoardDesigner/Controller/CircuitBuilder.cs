@@ -13,9 +13,11 @@ namespace PrintBoardDesigner
         private FileReader fileReader;
 
         private Circuit preparedCircuit;
+        Components ObjectStructure;
 
         public CircuitBuilder()
         {
+            this.ObjectStructure = new Components();
             this.circuitComponentFactory = new CircuitComponentFactory();
             this.fileReader = new FileReader();
             this.circuitParser = new CircuitParser();
@@ -38,6 +40,7 @@ namespace PrintBoardDesigner
 
             Dictionary<string, CircuitComponent> componentsDict = new Dictionary<string, CircuitComponent>();
             List<CircuitComponent> inputNodesList = new List<CircuitComponent>();
+           
 
             foreach (KeyValuePair<string, string> entry in componentsStringsDict)
             {
@@ -46,15 +49,19 @@ namespace PrintBoardDesigner
                     type = "INPUT";
                 }
                 CircuitComponent component = this.circuitComponentFactory.CreateCircuitComponent(entry.Key, type);
+                this.addToVisitorObjectStructure(component);
                 if (type == "INPUT")
                 {
                     if (entry.Value.Contains("HIGH"))
                     {
                         component.state = States.STATE_TRUE;
+                        component.initialState = States.STATE_TRUE;
                     }
                     else
                     {
                         component.state = States.STATE_FALSE;
+                        component.initialState = States.STATE_FALSE;
+
                     }
                     inputNodesList.Add(component);
                 }
@@ -87,8 +94,13 @@ namespace PrintBoardDesigner
             }
 
             Circuit circuit = new Circuit(inputComposite);
-
+            circuit.components = this.ObjectStructure;
             this.preparedCircuit = circuit;
+        }
+
+        private void addToVisitorObjectStructure(CircuitComponent component)
+        {
+            this.ObjectStructure.Attach(component);
         }
 
         private void CheckForInifinteLoop(List<CircuitComponent> inputNodeList)

@@ -7,6 +7,7 @@ namespace PrintBoardDesigner
 {
     public class InputNode : Node
     {
+
         public override void Activate()
         {
             this.CalculateState();
@@ -30,6 +31,14 @@ namespace PrintBoardDesigner
                 next.CalculateState();
             }
         }
+
+        public override void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+
+
         public static String Key
         {
             get

@@ -48,10 +48,11 @@ namespace PrintBoardDesigner
             base.CalculateState();
 
 
+        }
 
-
-
-
+        public override void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
         }
 
         public static String Key

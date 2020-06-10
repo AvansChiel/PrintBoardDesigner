@@ -25,12 +25,12 @@ namespace PrintBoardDesigner
                 ///if result of formula is 0, resulting state is true (high voltage)
                 if(state == 0)
                 {
-                    this.state = States.STATE_TRUE;
+                    this.Accept(new HighVoltageVisitor());
                 }
                 ///if result of formula is 1, resulting state is false (low voltage)
                 else if (state == 1)
                 {
-                    this.state = States.STATE_FALSE;
+                    this.Accept(new LowVoltageVisitor());
                 }
 
             }
@@ -41,6 +41,11 @@ namespace PrintBoardDesigner
             {
                 return "NAND";
             }
+        }
+
+        public override void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }

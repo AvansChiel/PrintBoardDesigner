@@ -33,6 +33,11 @@ namespace PrintBoardDesigner
 
             }
         }
+
+        public override void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
         public static String Key
         {
             get
