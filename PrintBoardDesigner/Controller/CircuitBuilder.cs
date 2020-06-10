@@ -8,35 +8,36 @@ namespace PrintBoardDesigner
     public class CircuitBuilder
     {
 
-        private CircuitComponentFactory circuitComponentFactory;
-        private CircuitParser circuitParser;
-        private FileReader fileReader;
+        private CircuitComponentFactory _circuitComponentFactory;
+        private CircuitParser _circuitParser;
+        private FileReader _fileReader;
 
-        private Circuit preparedCircuit;
-        Components ObjectStructure;
+        private Circuit _preparedCircuit;
+
+        private Components _componentsObjectStructure;
 
         public CircuitBuilder()
         {
-            this.ObjectStructure = new Components();
-            this.circuitComponentFactory = new CircuitComponentFactory();
-            this.fileReader = new FileReader();
-            this.circuitParser = new CircuitParser();
+            this._componentsObjectStructure = new Components();
+            this._circuitComponentFactory = new CircuitComponentFactory();
+            this._fileReader = new FileReader();
+            this._circuitParser = new CircuitParser();
         }
 
         public Circuit GetPreparedCircuit()
         {
-            return preparedCircuit;
+            return _preparedCircuit;
         }
 
         public void PrepareCircuit(string fileLocation)
         {
             /// Read File
-            List<string> fileLines = this.fileReader.ReadFile(fileLocation);
+            List<string> fileLines = this._fileReader.ReadFile(fileLocation);
             /// Parse File
-            this.circuitParser.ParseFile(fileLines);
+            this._circuitParser.ParseFile(fileLines);
             /// Get Dictionaries from parser
-            Dictionary<string, string> componentsStringsDict = this.circuitParser.CircuitComponentDict;
-            Dictionary<string, string[]> connectionsStringsDict = this.circuitParser.CircuitConnectionDict;
+            Dictionary<string, string> componentsStringsDict = this._circuitParser.CircuitComponentDict;
+            Dictionary<string, string[]> connectionsStringsDict = this._circuitParser.CircuitConnectionDict;
 
             Dictionary<string, CircuitComponent> componentsDict = new Dictionary<string, CircuitComponent>();
             List<CircuitComponent> inputNodesList = new List<CircuitComponent>();
@@ -48,8 +49,8 @@ namespace PrintBoardDesigner
                 if (type.Contains("INPUT")){
                     type = "INPUT";
                 }
-                CircuitComponent component = this.circuitComponentFactory.CreateCircuitComponent(entry.Key, type);
-                this.addToVisitorObjectStructure(component);
+                CircuitComponent component = this._circuitComponentFactory.CreateCircuitComponent(entry.Key, type);
+                this.AddToVisitorObjectStructure(component);
                 if (type == "INPUT")
                 {
                     if (entry.Value.Contains("HIGH"))
@@ -98,13 +99,13 @@ namespace PrintBoardDesigner
             }
 
             Circuit circuit = new Circuit(inputComposite);
-            circuit.components = this.ObjectStructure;
-            this.preparedCircuit = circuit;
+            circuit.components = this._componentsObjectStructure;
+            this._preparedCircuit = circuit;
         }
 
-        private void addToVisitorObjectStructure(CircuitComponent component)
+        private void AddToVisitorObjectStructure(CircuitComponent component)
         {
-            this.ObjectStructure.Attach(component);
+            this._componentsObjectStructure.Attach(component);
         }
 
         private void CheckForInifinteLoop(List<CircuitComponent> inputNodeList)
