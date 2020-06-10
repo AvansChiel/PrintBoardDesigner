@@ -26,5 +26,12 @@ namespace PrintBoardDesigner
         {
             this.state = this.inputs[0].state;
         }
+        public static String Key
+        {
+            get
+            {
+                return "PROBE";
+            }
+        }
     }
 }

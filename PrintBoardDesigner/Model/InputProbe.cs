@@ -30,5 +30,12 @@ namespace PrintBoardDesigner
                 next.CalculateState();
             }
         }
+        public static String Key
+        {
+            get
+            {
+                return "INPUT";
+            }
+        }
     }
 }
