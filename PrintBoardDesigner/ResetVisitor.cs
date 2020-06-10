@@ -9,7 +9,7 @@ namespace PrintBoardDesigner
     {
         public void Visit(CircuitComponent element)
         {
-            element.state = element.initialState;
+            element.state = element.InitialState;
         }
     }
 }

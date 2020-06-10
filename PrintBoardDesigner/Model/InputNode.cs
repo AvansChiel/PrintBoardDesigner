@@ -11,6 +11,62 @@ namespace PrintBoardDesigner
         public InputNode()
         {
             minInputs = 2;
+            if (this.InitialState == States.STATE_TRUE)
+            {
+                this.State = new ConcreteTrueState();
+            }
+            else
+            {
+                this.State = new ConcreteFalseState();
+            }
+        }
+
+        public override States InitialState
+        {
+            get
+            {
+                return this._initialState;
+            }
+            set
+            {
+                
+                this._initialState = value;
+                if(this._initialState == States.STATE_TRUE)
+                {
+                    this.State = new ConcreteTrueState();
+                }
+                else
+                {
+                    this.State = new ConcreteFalseState();
+                }
+            }
+        }
+
+        private State _state;
+
+        // Constructor
+
+        public InputNode(State state)
+        {
+            this.State = state;
+        }
+
+        // Gets or sets the state
+
+        public State State
+        {
+            get { return _state; }
+            set
+
+            {
+                _state = value;
+               
+            }
+        }
+
+        public void Request()
+        {
+            _state.Handle(this);
         }
 
 
