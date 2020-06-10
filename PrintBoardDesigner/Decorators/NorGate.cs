@@ -7,8 +7,10 @@ namespace PrintBoardDesigner
 {
     public class NorGateDecorator : GateDecorator
     {
+
         public NorGateDecorator(Gate decoratedComponent) : base(decoratedComponent)
         {
+            minInputs = 2;
         }
 
         public override void CalculateState()

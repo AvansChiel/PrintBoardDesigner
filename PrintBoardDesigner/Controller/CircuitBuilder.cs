@@ -82,10 +82,10 @@ namespace PrintBoardDesigner
                 }
                 
             }
+            CheckForInifinteLoop(inputNodesList);
 
             CheckForDisconnectedComponent(componentsDict);
 
-            CheckForInifinteLoop(inputNodesList);
 
             InputComposite inputComposite = new InputComposite();
             foreach(Node node in inputNodesList)
@@ -132,28 +132,38 @@ namespace PrintBoardDesigner
                 this.RecursivelyCheckOutputs(comp, newList);
             }
         }
-
         private void CheckForDisconnectedComponent(Dictionary<string, CircuitComponent> componentsDict)
         {
-            foreach(KeyValuePair<string, CircuitComponent> entry in componentsDict)
+            List<CircuitComponent> probes = new List<CircuitComponent>();
+
+            foreach (KeyValuePair<string, CircuitComponent> entry in componentsDict)
             {
+
                 var component = entry.Value;
-                /// Check for Dead End
-                if (component.outputs.Count <= 0)
+                if(component.GetType() == typeof(Probe))
                 {
-                    if (component.GetType() != typeof(Probe))
-                    {
-                        throw new ArgumentException("File contains disconnected component: "+ component.name + " has no outputs");
-                    }
+                    probes.Add(component);
                 }
-                /// Check for Dead Start
-                if(component.inputs.Count <= 0)
-                {
-                    if(component.GetType() != typeof(InputNode))
-                    {
-                        throw new ArgumentException("File contains disconnected component: " + component.name + " has no inputs");
-                    }
-                }
+
+            }
+
+            foreach (var probe in probes)
+            {
+                RecursivelyCheckInputs(probe);
+            }
+
+        }
+
+        private void RecursivelyCheckInputs(CircuitComponent component)
+        {
+            if (component.GetType() != typeof(InputNode) && component.inputs.Count < component.minInputs)
+            {
+                throw new ArgumentException("File contains disconnected component: " + component.name + " has no inputs");
+            }
+
+            foreach (CircuitComponent comp in component.inputs)
+            {
+                this.RecursivelyCheckInputs(comp);
             }
         }
 

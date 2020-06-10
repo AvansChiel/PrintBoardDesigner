@@ -8,6 +8,12 @@ namespace PrintBoardDesigner
     public class InputNode : Node
     {
 
+        public InputNode()
+        {
+            minInputs = 2;
+        }
+
+
         public override void Activate()
         {
             this.CalculateState();

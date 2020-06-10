@@ -7,6 +7,12 @@ namespace PrintBoardDesigner
 {
     public class NandGate : Gate
     {
+
+        public NandGate()
+        {
+            minInputs = 2;
+        }
+
         public override void CalculateState()
         {
             ///check if gate has at least the minimum of 2 inputs

@@ -8,6 +8,7 @@ namespace PrintBoardDesigner
     public abstract class CircuitComponent
     {
         public string name;
+        public int minInputs;
         public List<CircuitComponent> outputs;
         public List<CircuitComponent> inputs;
         public States initialState;

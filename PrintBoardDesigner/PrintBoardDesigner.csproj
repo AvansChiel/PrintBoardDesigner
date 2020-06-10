@@ -54,7 +54,7 @@
     <Compile Include="Model\Circuit.cs" />
     <Compile Include="Model\CircuitComponent.cs" />
     <Compile Include="Controller\CircuitComponentFactory.cs" />
-    <Compile Include="Model\InputProbe.cs" />
+    <Compile Include="Model\InputNode.cs" />
     <Compile Include="Model\NandGate.cs" />
     <Compile Include="Model\Gate.cs" />
     <Compile Include="Decorators\NorGate.cs" />

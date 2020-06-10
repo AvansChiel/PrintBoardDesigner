@@ -3,7 +3,7 @@
   <Class Name="PrintBoardDesigner.AndGateDecorator">
     <Position X="1.5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Decorators\AndGate.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -17,42 +17,42 @@
   <Class Name="PrintBoardDesigner.OrGateDecorator">
     <Position X="6.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Decorators\OrGate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.NotGateDecorator">
     <Position X="3.25" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Decorators\NotGate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.NandGate">
     <Position X="3" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Model\NandGate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.NorGateDecorator">
     <Position X="5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Decorators\NorGate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.XorGateDecorator">
     <Position X="8.5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Decorators\XorGate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.CircuitComponent">
     <Position X="7.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAEABAEgAAAAAQAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAEABAEgAAEAAQAAAA=</HashCode>
       <FileName>Model\CircuitComponent.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -62,14 +62,14 @@
   <Class Name="PrintBoardDesigner.InputNode">
     <Position X="11.25" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIIAAAAAAAAAAARAAAAABAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
-      <FileName>Model\InputProbe.cs</FileName>
+      <HashCode>AIIAAAAAAAAAAARAAAAARAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Model\InputNode.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.Probe">
     <Position X="13.75" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIIAAAAAAAAAAARAAAAABAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AIIAAAAAAAAAAARAAAAARAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Model\OutputProbe.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -83,7 +83,7 @@
   <Class Name="PrintBoardDesigner.Circuit">
     <Position X="14" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAIAAAACAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Circuit.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -107,7 +107,7 @@
   <Class Name="PrintBoardDesigner.CircuitBuilder">
     <Position X="5.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAQAAIAAIAAQAAAIAAAAAAACAAAAAAIAA=</HashCode>
+      <HashCode>AgCAAAAAAAAAQAAIAAIAAQAAAIAEAAAAACAAAAAAIAA=</HashCode>
       <FileName>Controller\CircuitBuilder.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

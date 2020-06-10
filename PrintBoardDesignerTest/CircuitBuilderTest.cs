@@ -24,7 +24,7 @@ namespace PrintBoardDesignerTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "File contains disconnected component")]
+        [ExpectedException(typeof(ArgumentException), "File contains disconnected component: has no inputs")]
         public void Builder_Throws_Exception_Disconnected_Component()
         {
             // Arrange

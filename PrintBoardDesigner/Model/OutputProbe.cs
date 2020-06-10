@@ -7,6 +7,12 @@ namespace PrintBoardDesigner
 {
     public class Probe : Node
     {
+
+        public Probe()
+        {
+            minInputs = 1;
+        }
+
         public override void Activate()
         {
             throw new NotImplementedException();
