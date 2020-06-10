@@ -48,5 +48,12 @@ namespace PrintBoardDesigner
             base.CalculateState();
 
         }
+        public static String Key
+        {
+            get
+            {
+                return "NOR";
+            }
+        }
     }
 }

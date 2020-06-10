@@ -36,5 +36,12 @@ namespace PrintBoardDesigner
             this.decoratedComponent.inputs.Add(prevComp);
             base.CalculateState();
         }
+        public static String Key
+        {
+            get
+            {
+                return "AND";
+            }
+        }
     }
 }

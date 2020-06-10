@@ -43,7 +43,6 @@ namespace PrintBoardDesigner
                     type = "INPUT";
                 }
                 CircuitComponent component = this.circuitComponentFactory.CreateCircuitComponent(entry.Key, type);
-                //substr on input nodes to create correct component
                 if (type == "INPUT")
                 {
                     if (entry.Value.Contains("HIGH"))
@@ -61,7 +60,6 @@ namespace PrintBoardDesigner
                     component.state = States.STATE_UNDEFINED;
                 }
                 componentsDict.Add(entry.Key, component);
-                // do something with entry.Value or entry.Key
             }
 
             foreach (KeyValuePair<string, string[]> entry in connectionsStringsDict)
@@ -69,18 +67,13 @@ namespace PrintBoardDesigner
                 foreach(string val in entry.Value)
                 {
                     componentsDict[entry.Key].outputs.Add(componentsDict[val]);
-                    //Console.WriteLine("val V");
-                    //Console.WriteLine(val);
                     CircuitComponent outputComp = componentsDict[val];
                     outputComp.inputs.Add(componentsDict[entry.Key]);
                 }
                 
-                // do something with entry.Value or entry.Key
             }
-            if(ContainsDisconnectedComponent(componentsDict))
-            {
-                throw new ArgumentException("File contains disconnected components");
-            }
+
+            CheckForDisconnectedComponent(componentsDict);
 
             CheckForInifinteLoop(inputNodesList);
 
@@ -119,18 +112,17 @@ namespace PrintBoardDesigner
             }
         }
 
-        private bool ContainsDisconnectedComponent(Dictionary<string, CircuitComponent> componentsDict)
+        private void CheckForDisconnectedComponent(Dictionary<string, CircuitComponent> componentsDict)
         {
             foreach(KeyValuePair<string, CircuitComponent> entry in componentsDict)
             {
                 var component = entry.Value;
-                var id = entry.Key;
                 /// Check for Dead End
                 if (component.outputs.Count <= 0)
                 {
                     if (component.GetType() != typeof(Probe))
                     {
-                        return true;
+                        throw new ArgumentException("File contains disconnected component: "+ component.name + " has no outputs");
                     }
                 }
                 /// Check for Dead Start
@@ -138,33 +130,11 @@ namespace PrintBoardDesigner
                 {
                     if(component.GetType() != typeof(InputNode))
                     {
-                        return true;
+                        throw new ArgumentException("File contains disconnected component: " + component.name + " has no inputs");
                     }
                 }
             }
-            return false;
         }
-
-        //private void ValidateCircuit()
-        //{
-        //    List<CircuitComponent> nodes = new List<CircuitComponent>();
-        //    foreach (var node in preparedCircuit.InputNodes)
-        //    {
-        //        CircuitComponent inputNode = node;
-        //        nodes.Add(inputNode);
-
-        //        var currentNode = inputNode.outputs[0];
-        //        while (currentNode.outputs.Count > 0)
-        //        {
-        //            for (int i = 0; i < currentNode.outputs.Count; i++)
-        //            {
-        //                nodes.Add(currentNode);
-        //                currentNode = currentNode.outputs[i];
-        //            }
-        //        }
-
-        //    }
-        //}
 
     }
 }

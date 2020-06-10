@@ -56,7 +56,6 @@
     <Compile Include="Decorators\NorGate.cs" />
     <Compile Include="Decorators\NotGate.cs" />
     <Compile Include="Decorators\OrGate.cs" />
-    <Compile Include="Model\Output.cs" />
     <Compile Include="Model\OutputProbe.cs" />
     <Compile Include="Controller\CircuitParser.cs" />
     <Compile Include="Controller\Program.cs" />

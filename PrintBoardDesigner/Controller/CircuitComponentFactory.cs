@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace PrintBoardDesigner
@@ -11,13 +12,14 @@ namespace PrintBoardDesigner
         private Dictionary<string, Type> _types = new Dictionary<string, Type>();
         public CircuitComponentFactory()
         {
-           // _types = new Dictionary<string, Type>();
+            // _types = new Dictionary<string, Type>();
+            this.Initialize();
 
-            this.AddComponentType("INPUT", typeof(InputNode));
-            this.AddComponentType("PROBE", typeof(Probe));
-            this.AddComponentType("OR", typeof(OrGateDecorator));
-            this.AddComponentType("AND", typeof(AndGateDecorator));
-            this.AddComponentType("NOT", typeof(NotGateDecorator));
+            //this.AddComponentType("INPUT", typeof(InputNode));
+            //this.AddComponentType("PROBE", typeof(Probe));
+            //this.AddComponentType("OR", typeof(OrGateDecorator));
+            //this.AddComponentType("AND", typeof(AndGateDecorator));
+            //this.AddComponentType("NOT", typeof(NotGateDecorator));
         }
 
         public void AddComponentType(string name, Type type)
@@ -46,6 +48,31 @@ namespace PrintBoardDesigner
         public bool DictionaryHasType(string type)
         {
             return _types.ContainsKey(type);
+        }
+
+        internal void Initialize()
+        {
+            Assembly asm = Assembly.GetExecutingAssembly();
+
+            Type[] allTypes = asm.GetTypes();
+            foreach (Type type in allTypes)
+            {
+                if (type.IsClass && !type.IsAbstract)
+                {
+
+                    if (type.IsSubclassOf(typeof(CircuitComponent)))
+                    {
+
+                        var info = type.GetProperty("Key").GetValue(null, null);
+                        String value = info.ToString();
+
+                        if (value != null)
+                        {
+                            _types[value] = type;
+                        }
+                    }
+                }
+            }
         }
 
     }

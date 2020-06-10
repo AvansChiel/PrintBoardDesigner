@@ -9,11 +9,17 @@ namespace PrintBoardDesigner
 {
     public class CircuitParser
     {
-        private static string[] NodeDescriptors = new string[] { "INPUT_HIGH", "INPUT_LOW", "PROBE", "OR", "AND", "NOT", "NAND", "NOR", "XOR" };
 
-        //TODO Deze weghalen en teruggeven met ParseFile
+        private bool connectionMode;
+
+        ///TODO Deze weghalen en teruggeven met ParseFile
         private Dictionary<string, string> circuitComponentDict = new Dictionary<string, string>();
         private Dictionary<string, string[]> circuitConnectionDict = new Dictionary<string, string[]>();
+
+        public CircuitParser()
+        {
+            connectionMode = false;
+        }
 
         public Dictionary<string, string> CircuitComponentDict
         {
@@ -31,8 +37,13 @@ namespace PrintBoardDesigner
         {
             foreach (var line in fileLines)
             {
+                if (line == "")
+                {
+                    connectionMode = true;
+                    continue;
+                }
                 /// If line Starts with #, treat as comment and skip
-                if (line == "" || line.Substring(0,1) == "#")
+                if (line.Substring(0,1) == "#")
                 {
                     continue;
                 }
@@ -44,7 +55,7 @@ namespace PrintBoardDesigner
                 string descriptor = ln.Substring(ln.IndexOf(':')+1, (ln.IndexOf(';')-1 - (ln.IndexOf(':'))));
 
                 /// If the type is not one of the Node Descriptors, treat parsed elements as connections
-                if (NodeDescriptors.Contains(descriptor))
+                if (!connectionMode)
                 {
                     circuitComponentDict[identifier] = descriptor;
                 }

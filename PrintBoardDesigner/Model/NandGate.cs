@@ -35,5 +35,12 @@ namespace PrintBoardDesigner
 
             }
         }
+        public static String Key
+        {
+            get
+            {
+                return "NAND";
+            }
+        }
     }
 }
