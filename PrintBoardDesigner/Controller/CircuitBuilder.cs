@@ -76,6 +76,10 @@ namespace PrintBoardDesigner
             {
                 foreach(string val in entry.Value)
                 {
+                    if(!componentsDict.ContainsKey(val))
+                    {
+                        throw new ArgumentException("Invalid Circuit: Cannot create connection to or from component: " + val);
+                    }
                     componentsDict[entry.Key].outputs.Add(componentsDict[val]);
                     CircuitComponent outputComp = componentsDict[val];
                     outputComp.inputs.Add(componentsDict[entry.Key]);
@@ -120,7 +124,7 @@ namespace PrintBoardDesigner
             {
                 if (roundList.Contains(comp))
                 {
-                    throw new ArgumentException("File contains inifinte loop");
+                    throw new ArgumentException("Invalid Circuit: contains infinite loop");
                 }
                 List<CircuitComponent> newList = new List<CircuitComponent>();
                 foreach(var item in roundList)
@@ -156,9 +160,13 @@ namespace PrintBoardDesigner
 
         private void RecursivelyCheckInputs(CircuitComponent component)
         {
-            if (component.GetType() != typeof(InputNode) && component.inputs.Count < component.minInputs)
+            int inputs = component.inputs.Count;
+            int minInputs = component.minInputs;
+
+            if (component.GetType() != typeof(InputNode) && inputs < minInputs)
             {
-                throw new ArgumentException("File contains disconnected component: " + component.name + " has no inputs");
+                var type = component.GetType().GetProperty("Key").GetValue(null, null);
+                throw new ArgumentException("Invalid Circuit: " + component.name + " ("+ type.ToString() +") has " + inputs + " inputs, but needs " + minInputs + " inputs.");
             }
 
             foreach (CircuitComponent comp in component.inputs)

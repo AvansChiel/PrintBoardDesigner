@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox Name="FileNameTextBox" HorizontalAlignment="Left" TextAlignment="Center" Height="23" Margin="217,112,0,0" TextWrapping="Wrap" Text="Open a Circuit" VerticalAlignment="Top" Width="371"/>
+        <TextBox Name="FileNameTextBox" HorizontalAlignment="Left" TextAlignment="Center" Height="49
+" Margin="217,104,0,0" TextWrapping="Wrap" Text="Open a Circuit" VerticalAlignment="Top" Width="371"/>
         <Button Content="Open Circuit" HorizontalAlignment="Left" Margin="362,158,0,0" VerticalAlignment="Top" Width="75" Click="OpenCircuit_Click"/>
         <Button Content="Start Circuit" HorizontalAlignment="Left" Margin="362,208,0,0" VerticalAlignment="Top" Width="75" Click="StartCircuit_Click"/>
 
