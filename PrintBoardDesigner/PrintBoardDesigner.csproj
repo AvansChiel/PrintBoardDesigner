@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A986B676-6E40-491A-8BEF-D9F20B941FDA}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>PrintBoardDesigner</RootNamespace>
     <AssemblyName>PrintBoardDesigner</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,43 +46,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components.cs" />
-    <Compile Include="ConcreteStateA.cs" />
-    <Compile Include="ConcreteStateB.cs" />
+    <Compile Include="Model\Components.cs" />
+    <Compile Include="Model\States\ConcreteTrueState.cs" />
+    <Compile Include="Model\States\ConcreteFalseState.cs" />
     <Compile Include="Controller\CircuitBuilder.cs" />
     <Compile Include="Controller\FileReader.cs" />
-    <Compile Include="GateDecorator.cs" />
-    <Compile Include="Decorators\AndGate.cs" />
-    <Compile Include="InputComposite.cs" />
-    <Compile Include="IVisitor.cs" />
-    <Compile Include="LowVoltageVisitor.cs" />
+    <Compile Include="Model\Decorators\GateDecorator.cs" />
+    <Compile Include="Model\Decorators\AndGate.cs" />
+    <Compile Include="Model\InputComposite.cs" />
+    <Compile Include="Model\Visitors\IVisitor.cs" />
     <Compile Include="Model\Circuit.cs" />
     <Compile Include="Model\CircuitComponent.cs" />
     <Compile Include="Controller\CircuitComponentFactory.cs" />
     <Compile Include="Model\InputNode.cs" />
     <Compile Include="Model\NandGate.cs" />
     <Compile Include="Model\Gate.cs" />
-    <Compile Include="Decorators\NorGate.cs" />
-    <Compile Include="Decorators\NotGate.cs" />
-    <Compile Include="Decorators\OrGate.cs" />
+    <Compile Include="Model\Decorators\NorGate.cs" />
+    <Compile Include="Model\Decorators\NotGate.cs" />
+    <Compile Include="Model\Decorators\OrGate.cs" />
     <Compile Include="Model\OutputProbe.cs" />
     <Compile Include="Controller\CircuitParser.cs" />
-    <Compile Include="Controller\Program.cs" />
     <Compile Include="Model\Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controller\MainController.cs" />
-    <Compile Include="Decorators\XorGate.cs" />
-    <Compile Include="ResetVisitor.cs" />
-    <Compile Include="State.cs" />
-    <Compile Include="States.cs" />
-    <Compile Include="HighVoltageVisitor.cs" />
+    <Compile Include="Model\Decorators\XorGate.cs" />
+    <Compile Include="Model\Visitors\ResetVisitor.cs" />
+    <Compile Include="Model\States\State.cs" />
+    <Compile Include="Model\States.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

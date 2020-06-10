@@ -15,17 +15,17 @@ namespace PrintBoardDesigner
 
         public override void Activate()
         {
-            throw new NotImplementedException();
+            throw new Exception("Can not activate a probe");
         }
 
         public override void Add(Node c)
         {
-            throw new NotImplementedException();
+            throw new Exception("Can not add to a leaf");
         }
 
         public override void Remove(Node c)
         {
-            throw new NotImplementedException();
+            throw new Exception("Can not remove from a leaf");
         }
 
         public override void CalculateState()

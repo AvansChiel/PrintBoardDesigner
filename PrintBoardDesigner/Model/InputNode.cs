@@ -10,7 +10,7 @@ namespace PrintBoardDesigner
 
         public InputNode()
         {
-            minInputs = 2;
+            minInputs = 0;
             if (this.InitialState == States.STATE_TRUE)
             {
                 this.State = new ConcreteTrueState();
@@ -44,14 +44,10 @@ namespace PrintBoardDesigner
 
         private State _state;
 
-        // Constructor
-
         public InputNode(State state)
         {
             this.State = state;
         }
-
-        // Gets or sets the state
 
         public State State
         {
@@ -77,13 +73,13 @@ namespace PrintBoardDesigner
 
         public override void Add(Node c)
         {
-            throw new NotImplementedException();
+            throw new Exception("Can not add to leaf");
         }
 
 
         public override void Remove(Node c)
         {
-            throw new NotImplementedException();
+            throw new Exception("Can not remove from leaf");
         }
 
         public override void CalculateState()

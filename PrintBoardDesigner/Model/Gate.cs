@@ -18,10 +18,5 @@ namespace PrintBoardDesigner
                 }
             }
         }
-
-
-
-
-
     }
 }
