@@ -45,7 +45,8 @@ namespace PrintBoardView
             this.probes = new List<CircuitComponent>();
             this.drawingList = new List<CircuitComponentDrawing>();
 
-            PaintWindow();
+            this.constructComponentOrder();
+            this.DrawCanvas();
            
 
         }
@@ -54,26 +55,25 @@ namespace PrintBoardView
         {
             this.circuit.components.Accept(new ResetVisitor());
             this.circuit.InputComposite.Activate();
-            this.redrawCanvasWithExistingData();
+            this.DrawCanvas();
         }
 
-        private void OnTimerEvent(object sender, EventArgs e)
+        private void DrawCanvas()
         {
-            PaintWindow();
-        }
-
-        private void PaintWindow()
-        {
-            // Create a canvas sized to fill the window
             circuitCanvas = new Canvas();
             circuitCanvas.Background = Brushes.LightSteelBlue;
-            //circuitCanvas.Height = this.Height - 50;
 
+            this.AddGatesToCanvas();
+            this.DrawLines();
+            this.addButtons();
 
-            //take node
-            //for each output do the same
+            this.Content = circuitCanvas;
+            this.Show();
+        }
+
+        private void constructComponentOrder()
+        {
             this.gates.Add(new List<CircuitComponent>());
-            
             for (int i = 0; i < circuit.InputComposite.GetChildren().Count; i++)
             {
                 CircuitComponent node = circuit.InputComposite.GetChildren()[i];
@@ -81,31 +81,7 @@ namespace PrintBoardView
                 recursiveTestMethod(node, 1);
 
             }
-
-
             this.gates.Add(probes);
-            Console.WriteLine(this.gates[this.gates.Count - 1].Count);
-            this.logStuff();
-            
-            this.addGatesToCanvas();
-            this.DrawLines();
-            this.addButtons();
-            this.Content = circuitCanvas;
-
-            this.Show();
-        }
-
-
-        private void logStuff()
-        {
-
-            for (int i = 0; i < this.gates.Count; i++)
-            {
-                for(int j = 0; j < this.gates[i].Count; j++)
-                {
-                    Console.WriteLine(this.gates[i][j].name);
-                }
-            }
         }
 
         private void recursiveTestMethod(CircuitComponent circuitComponent, int passedThroughTimes) 
@@ -122,7 +98,7 @@ namespace PrintBoardView
                 }
                 else
                 {
-                    if (!this.isPresent(output))
+                    if (!this.IsPresent(output))
                     {
                          while(this.gates.Count <= passedThroughTimes)
                          {
@@ -138,7 +114,7 @@ namespace PrintBoardView
 
         }
 
-        private bool isPresent(CircuitComponent component)
+        private bool IsPresent(CircuitComponent component)
         {
             foreach (var gatesList in gates)
             {
@@ -150,7 +126,7 @@ namespace PrintBoardView
             return false;
         }
 
-        private void addGatesToCanvas()
+        private void AddGatesToCanvas()
         {
             for(int i = 0; i < this.gates.Count; i++)
             {
@@ -232,9 +208,7 @@ namespace PrintBoardView
             CircuitComponentDrawing cDrawing = new CircuitComponentDrawing(component, left, top);
             drawingList.Add(cDrawing);
             
-            //save in object
-            //add object to array
-
+           
             Ellipse e1 = new Ellipse();
             e1.Height = e1.Width = CircleRadius;
             e1.ToolTip = component.name;
@@ -259,18 +233,10 @@ namespace PrintBoardView
             {
                 e1.MouseUp += (s, e) =>
                 {
-                    //if (component.state != States.STATE_TRUE)
-                    //{
-                    //    component.state = States.STATE_TRUE;
-                    //}
-                    //else
-                    //{
-                    //    component.state = States.STATE_FALSE;
-                    //}
                     InputNode node = (InputNode)component;
                     node.Request();
                     this.circuit.InputComposite.Activate();
-                    redrawCanvasWithExistingData();
+                    DrawCanvas();
                 };
             }
 
@@ -287,19 +253,7 @@ namespace PrintBoardView
 
         }
 
-        private void redrawCanvasWithExistingData()
-        {
-            circuitCanvas = new Canvas();
-            circuitCanvas.Background = Brushes.LightSteelBlue;
 
-            this.addGatesToCanvas();
-            this.DrawLines();
-
-            this.addButtons();
-
-            this.Content = circuitCanvas;
-            this.Show();
-        }
 
         private void addButtons()
         {
@@ -308,21 +262,6 @@ namespace PrintBoardView
             resetButton.Click += resetCircuit;
             this.circuitCanvas.Children.Add(resetButton);
         }
-
-
-        //private void toggleState(object sender, MouseButtonEventArgs e)
-        //{
-        //    //foreach(CircuitComponentDrawing comp in drawingList)
-        //    //{
-        //    //    if
-        //    //}
-        //    Console.WriteLine(sender);
-        //    Console.WriteLine(e);
-        //}
-
-
-       
-
 
     }
 }
