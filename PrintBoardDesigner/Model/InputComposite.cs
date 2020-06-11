@@ -8,13 +8,13 @@ namespace PrintBoardDesigner
     public class InputComposite : Node
     {
 
+        private List<Node> _children;
+
+
         public InputComposite()
         {
             this._children = new List<Node>();
         }
-
-        private List<Node> _children;
-
 
         public override void Add(Node child)
         {
@@ -34,14 +34,14 @@ namespace PrintBoardDesigner
             }
         }
 
-        public List<Node> getChildren()
+        public List<Node> GetChildren()
         {
             return this._children;
         }
 
         public override void CalculateState()
         {
-            throw new NotImplementedException();
+            throw new Exception("Can not calculate state on composite");
         }
 
         public override void Accept(IVisitor visitor)

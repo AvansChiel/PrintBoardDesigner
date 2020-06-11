@@ -3,8 +3,8 @@
   <Class Name="PrintBoardDesigner.AndGateDecorator">
     <Position X="1.5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
-      <FileName>Decorators\AndGate.cs</FileName>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Model\Decorators\AndGate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.Gate">
@@ -17,42 +17,42 @@
   <Class Name="PrintBoardDesigner.OrGateDecorator">
     <Position X="6.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
-      <FileName>Decorators\OrGate.cs</FileName>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Model\Decorators\OrGate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.NotGateDecorator">
     <Position X="3.25" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
-      <FileName>Decorators\NotGate.cs</FileName>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Model\Decorators\NotGate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.NandGate">
     <Position X="3" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Model\NandGate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.NorGateDecorator">
     <Position X="5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
-      <FileName>Decorators\NorGate.cs</FileName>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Model\Decorators\NorGate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.XorGateDecorator">
     <Position X="8.5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
-      <FileName>Decorators\XorGate.cs</FileName>
+      <HashCode>AIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Model\Decorators\XorGate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.CircuitComponent">
     <Position X="7.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAEABAEgAAEAAQAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAQAAAAAAEEBAEgAAAAAQABAA=</HashCode>
       <FileName>Model\CircuitComponent.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -62,28 +62,34 @@
   <Class Name="PrintBoardDesigner.InputNode">
     <Position X="11.25" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIIAAAAAAAAAAARAAAAARAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AIIAAAAAAAAAAARAAAAADAAAAAAAgAAAgAAABAAABAA=</HashCode>
       <FileName>Model\InputNode.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="State" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="PrintBoardDesigner.Probe">
     <Position X="13.75" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIIAAAAAAAAAAARAAAAARAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AIIAAAAAAAAAAARAAAAABAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Model\OutputProbe.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.MainController">
-    <Position X="8.75" Y="0.5" Width="1.5" />
+    <Position X="13.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAABAIEAAIAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAABAIEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controller\MainController.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="circuit" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="PrintBoardDesigner.Circuit">
-    <Position X="14" Y="2.5" Width="1.5" />
+    <Position X="15.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAIAAAACAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAAAAACAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Circuit.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -100,27 +106,26 @@
   <Class Name="PrintBoardDesigner.CircuitParser">
     <Position X="0.5" Y="1" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAABABAAAAIAABACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAABABAAAAIAABAAAAAAAAABCAAAAAAAAAAAA=</HashCode>
       <FileName>Controller\CircuitParser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.CircuitBuilder">
-    <Position X="5.25" Y="2.75" Width="1.5" />
+    <Position X="5.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgCAAAAAAAAAQAAIAAIAAQAAAIAEAAAAACAAAAAAIAA=</HashCode>
+      <HashCode>BACABEAAAAAgQAAIAAAAAQAAAIAAABAAAAAAAAAAAAg=</HashCode>
       <FileName>Controller\CircuitBuilder.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="circuitComponentFactory" />
-      <Field Name="circuitParser" />
-      <Field Name="preparedCircuit" />
+      <Field Name="_circuitParser" />
+      <Field Name="_circuitComponentFactory" />
     </ShowAsAssociation>
   </Class>
   <Class Name="PrintBoardDesigner.GateDecorator">
     <Position X="5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAgAAAAAAAAAA=</HashCode>
-      <FileName>GateDecorator.cs</FileName>
+      <FileName>Model\Decorators\GateDecorator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.Node" Collapsed="true">
@@ -133,15 +138,15 @@
   <Class Name="PrintBoardDesigner.InputComposite">
     <Position X="15.5" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIIQAAAAAAAAAARAAAAABAAAAAAAAAAAgEAAAAAAAAA=</HashCode>
-      <FileName>InputComposite.cs</FileName>
+      <HashCode>AIIQAAAAAAAAAARAAAAABAAAAAAAQAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Model\InputComposite.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrintBoardDesigner.ResetVisitor">
-    <Position X="11" Y="4.25" Width="1.5" />
+    <Position X="12.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ResetVisitor.cs</FileName>
+      <FileName>Model\Visitors\ResetVisitor.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -149,21 +154,42 @@
     <Position X="8" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAIAIAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Components.cs</FileName>
+      <FileName>Model\Components.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrintBoardDesigner.State">
+    <Position X="12.25" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\States\State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrintBoardDesigner.ConcreteTrueState">
+    <Position X="11" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\States\ConcreteTrueState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrintBoardDesigner.ConcreteFalseState">
+    <Position X="13.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\States\ConcreteFalseState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="PrintBoardDesigner.IVisitor">
     <Position X="10.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IVisitor.cs</FileName>
+      <FileName>Model\Visitors\IVisitor.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="PrintBoardDesigner.States">
-    <Position X="5.5" Y="5.5" Width="1.5" />
+    <Position X="5.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAIAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
-      <FileName>States.cs</FileName>
+      <FileName>Model\States.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

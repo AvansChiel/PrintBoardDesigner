@@ -5,11 +5,11 @@ using System.Text;
 
 namespace PrintBoardDesigner
 {
-    public class LowVoltageVisitor : IVisitor
+    public class ResetVisitor :  IVisitor
     {
         public void Visit(CircuitComponent element)
         {
-            element.state = States.STATE_FALSE;
+            element.state = element.InitialState;
         }
     }
 }

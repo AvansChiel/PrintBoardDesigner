@@ -12,9 +12,8 @@ namespace PrintBoardDesigner
 
         private bool connectionMode;
 
-        ///TODO Deze weghalen en teruggeven met ParseFile
-        private Dictionary<string, string> circuitComponentDict = new Dictionary<string, string>();
-        private Dictionary<string, string[]> circuitConnectionDict = new Dictionary<string, string[]>();
+        private Dictionary<string, string> _circuitComponentDict = new Dictionary<string, string>();
+        private Dictionary<string, string[]> _circuitConnectionDict = new Dictionary<string, string[]>();
 
         public CircuitParser()
         {
@@ -23,14 +22,14 @@ namespace PrintBoardDesigner
 
         public Dictionary<string, string> CircuitComponentDict
         {
-            get { return circuitComponentDict; }
-            set { circuitComponentDict = value; }
+            get { return _circuitComponentDict; }
+            set { _circuitComponentDict = value; }
         }
 
         public Dictionary<string, string[]> CircuitConnectionDict
         {
-            get { return circuitConnectionDict; }
-            set { circuitConnectionDict = value; }
+            get { return _circuitConnectionDict; }
+            set { _circuitConnectionDict = value; }
         }
 
         public void ParseFile(List<string> fileLines)
@@ -57,7 +56,7 @@ namespace PrintBoardDesigner
                 /// If the type is not one of the Node Descriptors, treat parsed elements as connections
                 if (!connectionMode)
                 {
-                    circuitComponentDict[identifier] = descriptor;
+                    _circuitComponentDict[identifier] = descriptor;
                 }
                 else
                 {
@@ -72,7 +71,7 @@ namespace PrintBoardDesigner
                         connList = new string[] { descriptor };
                     }
 
-                    circuitConnectionDict[identifier] = connList;
+                    _circuitConnectionDict[identifier] = connList;
                 }
 
             }

@@ -56,12 +56,12 @@ namespace PrintBoardDesigner
                     if (entry.Value.Contains("HIGH"))
                     {
                         component.state = States.STATE_TRUE;
-                        component.initialState = States.STATE_TRUE;
+                        component.InitialState = States.STATE_TRUE;
                     }
                     else
                     {
                         component.state = States.STATE_FALSE;
-                        component.initialState = States.STATE_FALSE;
+                        component.InitialState = States.STATE_FALSE;
 
                     }
                     inputNodesList.Add(component);
@@ -164,7 +164,7 @@ namespace PrintBoardDesigner
             int inputs = component.inputs.Count;
             int minInputs = component.minInputs;
 
-            if (component.GetType() != typeof(InputNode) && inputs < minInputs)
+            if (inputs < minInputs)
             {
                 var type = component.GetType().GetProperty("Key").GetValue(null, null);
                 throw new ArgumentException("Invalid Circuit: " + component.name + " ("+ type.ToString() +") has " + inputs + " inputs, but needs " + minInputs + " inputs.");

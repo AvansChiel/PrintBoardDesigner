@@ -74,9 +74,9 @@ namespace PrintBoardView
             //for each output do the same
             this.gates.Add(new List<CircuitComponent>());
             
-            for (int i = 0; i < circuit.InputComposite.getChildren().Count; i++)
+            for (int i = 0; i < circuit.InputComposite.GetChildren().Count; i++)
             {
-                CircuitComponent node = circuit.InputComposite.getChildren()[i];
+                CircuitComponent node = circuit.InputComposite.GetChildren()[i];
                 this.gates[0].Add(node);
                 recursiveTestMethod(node, 1);
 
@@ -261,14 +261,16 @@ namespace PrintBoardView
             {
                 e1.MouseUp += (s, e) =>
                 {
-                    if (component.state != States.STATE_TRUE)
-                    {
-                        component.state = States.STATE_TRUE;
-                    }
-                    else
-                    {
-                        component.state = States.STATE_FALSE;
-                    }
+                    //if (component.state != States.STATE_TRUE)
+                    //{
+                    //    component.state = States.STATE_TRUE;
+                    //}
+                    //else
+                    //{
+                    //    component.state = States.STATE_FALSE;
+                    //}
+                    InputNode node = (InputNode)component;
+                    node.Request();
                     this.circuit.InputComposite.Activate();
                     redrawCanvasWithExistingData();
                 };

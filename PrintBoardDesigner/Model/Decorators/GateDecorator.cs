@@ -24,10 +24,10 @@ namespace PrintBoardDesigner
                 decoratedComponent.CalculateState();
                 this.state = decoratedComponent.state;
 
-                //restore orig
+                ///restore original inputs
                 this.decoratedComponent.inputs = this.inputs;
 
-                //notify statechange
+                ///notify statechange to keep chain going
                 base.NotifyStateChanged();
             }
         }
