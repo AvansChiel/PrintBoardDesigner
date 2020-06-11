@@ -187,7 +187,7 @@ namespace PrintBoardView
                     }
                     Line line = new Line();
 
-                    var normalStroke = Brushes.Black;
+                    var normalStroke = Brushes.LightGray;
 
                     if (item.Component.state == States.STATE_TRUE)
                     {
@@ -244,7 +244,7 @@ namespace PrintBoardView
             }
             else
             {
-                e1.Fill = Brushes.Black;
+                e1.Fill = Brushes.LightGray;
             }
             
             e1.Name = component.name;
@@ -252,8 +252,10 @@ namespace PrintBoardView
 
 
             TextBlock t1 = new TextBlock();
+            var type = component.GetType().GetProperty("Key").GetValue(null, null);
             t1.FontSize = 14;
-            t1.Text = component.name;
+            t1.Text = component.name + '\n' + "("+type+")";
+            Canvas.SetZIndex(t1, 101);
 
             if (xIterator == 0)
             {
