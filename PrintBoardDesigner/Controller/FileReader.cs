@@ -19,9 +19,12 @@ namespace PrintBoardDesigner
                 {
                     string ln;
 
-                    while ((ln = file.ReadLine()) != null)
+                    ln = file.ReadLine();
+
+                    while (ln != null)
                     {
                         fileLines.Add(ln);
+                        ln = file.ReadLine();
                     }
                     file.Close();
                 }
