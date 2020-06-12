@@ -21,6 +21,16 @@ namespace PrintBoardDesignerTest
 
             // Assert
             Assert.IsInstanceOfType(circuit, typeof(Circuit));
+            Assert.IsNotNull(circuit.InputComposite);
+            //Default: True, True, False
+            var inode1 = (InputNode)circuit.InputComposite.GetChildren()[0];
+            Assert.AreEqual(inode1.State.GetType(), new ConcreteTrueState().GetType());
+
+            var inode2 = (InputNode)circuit.InputComposite.GetChildren()[1];
+            Assert.AreEqual(inode2.State.GetType(), new ConcreteTrueState().GetType());
+
+            var inode3 = (InputNode)circuit.InputComposite.GetChildren()[2];
+            Assert.AreEqual(inode3.State.GetType(), new ConcreteFalseState().GetType());
         }
 
         [TestMethod]

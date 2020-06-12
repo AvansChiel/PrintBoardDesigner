@@ -23,13 +23,11 @@ namespace PrintBoardDesigner
         public Dictionary<string, string> CircuitComponentDict
         {
             get { return _circuitComponentDict; }
-            set { _circuitComponentDict = value; }
         }
 
         public Dictionary<string, string[]> CircuitConnectionDict
         {
             get { return _circuitConnectionDict; }
-            set { _circuitConnectionDict = value; }
         }
 
         public void ParseFile(List<string> fileLines)
