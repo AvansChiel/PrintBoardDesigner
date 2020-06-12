@@ -21,6 +21,7 @@ namespace PrintBoardDesigner
         {
             if (decoratedComponent != null)
             {
+                ///calculate the decorated component(nand gate) state
                 decoratedComponent.CalculateState();
                 this.state = decoratedComponent.state;
 
