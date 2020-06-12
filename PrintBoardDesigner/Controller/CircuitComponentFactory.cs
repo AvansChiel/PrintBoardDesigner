@@ -28,9 +28,8 @@ namespace PrintBoardDesigner
             }
 
             Type t = _types[type];
-            if (type == "INPUT" || type == "PROBE" )
+            if (t.IsSubclassOf(typeof(Node)))
             {
-
                 CircuitComponent c = (CircuitComponent)Activator.CreateInstance(t);
                 c.name = name;
                 return c;
@@ -53,6 +52,8 @@ namespace PrintBoardDesigner
             Assembly asm = Assembly.GetExecutingAssembly();
 
             Type[] allTypes = asm.GetTypes();
+
+            /// Loop through all types of current assembly. Add to the Dictionary if the type is a subclass of CircuitComponent
             foreach (Type type in allTypes)
             {
                 if (type.IsClass && !type.IsAbstract)
