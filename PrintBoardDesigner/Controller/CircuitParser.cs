@@ -9,7 +9,6 @@ namespace PrintBoardDesigner
 {
     public class CircuitParser
     {
-
         private bool connectionMode;
 
         private Dictionary<string, string> _circuitComponentDict = new Dictionary<string, string>();
@@ -17,6 +16,7 @@ namespace PrintBoardDesigner
 
         public CircuitParser()
         {
+            /// Parser starts in Component mode as file first defines components
             connectionMode = false;
         }
 

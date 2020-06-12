@@ -35,22 +35,27 @@ namespace PrintBoardDesigner
             List<string> fileLines = this._fileReader.ReadFile(fileLocation);
             /// Parse File
             this._circuitParser.ParseFile(fileLines);
-            /// Get Dictionaries from parser
-            Dictionary<string, string> componentsStringsDict = this._circuitParser.CircuitComponentDict;
-            Dictionary<string, string[]> connectionsStringsDict = this._circuitParser.CircuitConnectionDict;
+            /// Get Connections and Components from parser
+            Dictionary<string, string> componentsStringsDict = _circuitParser.CircuitComponentDict;
+            Dictionary<string, string[]> connectionsStringsDict = _circuitParser.CircuitConnectionDict;
 
+            /// Initialize the dictionary used for TODO
             Dictionary<string, CircuitComponent> componentsDict = new Dictionary<string, CircuitComponent>();
             List<CircuitComponent> inputNodesList = new List<CircuitComponent>();
            
-
+            /// Loop through the list of components
             foreach (KeyValuePair<string, string> entry in componentsStringsDict)
             {
+                /// INPUT_HIGH and INPUT_LOW should become INPUT
                 string type = entry.Value;
                 if (type.Contains("INPUT")){
                     type = "INPUT";
                 }
                 CircuitComponent component = this._circuitComponentFactory.CreateCircuitComponent(entry.Key, type);
+                /// Add Visitor for Reset functionality
                 this.AddToVisitorObjectStructure(component);
+
+                /// Set State depending on INPUT_HIGH or _LOW
                 if (type == "INPUT")
                 {
                     if (entry.Value.Contains("HIGH"))
@@ -64,19 +69,23 @@ namespace PrintBoardDesigner
                         component.InitialState = States.STATE_FALSE;
 
                     }
+                    /// Add the input node to the inputnodes list (Will be registered in Circuit)
                     inputNodesList.Add(component);
                 }
                 else
                 {
                     component.state = States.STATE_UNDEFINED;
                 }
+                /// Add non-input components to the list with components, later used to add connections
                 componentsDict.Add(entry.Key, component);
             }
 
+            /// Loop through the list of components, to add connections
             foreach (KeyValuePair<string, string[]> entry in connectionsStringsDict)
             {
                 foreach(string val in entry.Value)
                 {
+                    /// A connection cannot be made to or from an undefined component.
                     if(!componentsDict.ContainsKey(val))
                     {
                         throw new ArgumentException("Invalid Circuit: Cannot create connection to or from component: " + val);
@@ -87,11 +96,12 @@ namespace PrintBoardDesigner
                 }
                 
             }
+            /// Validation
             CheckForInifinteLoop(inputNodesList);
 
             CheckForDisconnectedComponent(componentsDict);
 
-
+            /// Create and add composite.
             InputComposite inputComposite = new InputComposite();
             foreach(Node node in inputNodesList)
             {
@@ -99,8 +109,8 @@ namespace PrintBoardDesigner
             }
 
             Circuit circuit = new Circuit(inputComposite);
-            circuit.components = this._componentsObjectStructure;
-            this._preparedCircuit = circuit;
+            circuit.components = _componentsObjectStructure;
+            _preparedCircuit = circuit;
         }
 
         private void AddToVisitorObjectStructure(CircuitComponent component)
@@ -128,6 +138,7 @@ namespace PrintBoardDesigner
                     throw new ArgumentException("Invalid Circuit: contains infinite loop");
                 }
                 List<CircuitComponent> newList = new List<CircuitComponent>();
+                /// Create new list for new branch
                 foreach(var item in roundList)
                 {
                     newList.Add(item);
