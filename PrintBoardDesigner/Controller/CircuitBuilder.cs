@@ -9,8 +9,9 @@ namespace PrintBoardDesigner
     {
 
         private CircuitComponentFactory _circuitComponentFactory;
-        private CircuitParser _circuitParser;
-        private FileReader _fileReader;
+        
+        private Dictionary<string, string[]> _connectionsStringsDict;
+        private Dictionary<string, string> _componentsStringsDict;
 
         private Circuit _preparedCircuit;
 
@@ -20,8 +21,7 @@ namespace PrintBoardDesigner
         {
             this._componentsObjectStructure = new Components();
             this._circuitComponentFactory = new CircuitComponentFactory();
-            this._fileReader = new FileReader();
-            this._circuitParser = new CircuitParser();
+            
         }
 
         public Circuit GetPreparedCircuit()
@@ -29,22 +29,17 @@ namespace PrintBoardDesigner
             return _preparedCircuit;
         }
 
-        public void PrepareCircuit(string fileLocation)
+        public void PrepareCircuit(Dictionary<string, string> componentsStringDict, Dictionary<string, string[]> connectionsStringDict)
         {
-            /// Read File
-            List<string> fileLines = this._fileReader.ReadFile(fileLocation);
-            /// Parse File
-            this._circuitParser.ParseFile(fileLines);
-            /// Get Connections and Components from parser
-            Dictionary<string, string> componentsStringsDict = _circuitParser.CircuitComponentDict;
-            Dictionary<string, string[]> connectionsStringsDict = _circuitParser.CircuitConnectionDict;
+            _componentsStringsDict = componentsStringDict;
+            _connectionsStringsDict = connectionsStringDict;
 
             /// Initialize the dictionary used for TODO
             Dictionary<string, CircuitComponent> componentsDict = new Dictionary<string, CircuitComponent>();
             List<CircuitComponent> inputNodesList = new List<CircuitComponent>();
            
             /// Loop through the list of components
-            foreach (KeyValuePair<string, string> entry in componentsStringsDict)
+            foreach (KeyValuePair<string, string> entry in _componentsStringsDict)
             {
                 /// INPUT_HIGH and INPUT_LOW should become INPUT
                 string type = entry.Value;
@@ -81,7 +76,7 @@ namespace PrintBoardDesigner
             }
 
             /// Loop through the list of components, to add connections
-            foreach (KeyValuePair<string, string[]> entry in connectionsStringsDict)
+            foreach (KeyValuePair<string, string[]> entry in _connectionsStringsDict)
             {
                 foreach(string val in entry.Value)
                 {

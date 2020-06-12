@@ -79,7 +79,7 @@
   <Class Name="PrintBoardDesigner.MainController">
     <Position X="13.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAABAIEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAAAAAEAAAABIIEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controller\MainController.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -113,12 +113,11 @@
   <Class Name="PrintBoardDesigner.CircuitBuilder">
     <Position X="5.75" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BACABEAAAAAgQAAIAAAAAQAAAIAAABAAAAAAAAAAAAg=</HashCode>
+      <HashCode>BACAAEAAAAAgQAAIAAAAAQAAAIAAAFgAAAAAAAAAAAg=</HashCode>
       <FileName>Controller\CircuitBuilder.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="_circuitComponentFactory" />
-      <Field Name="_circuitParser" />
     </ShowAsAssociation>
   </Class>
   <Class Name="PrintBoardDesigner.GateDecorator">

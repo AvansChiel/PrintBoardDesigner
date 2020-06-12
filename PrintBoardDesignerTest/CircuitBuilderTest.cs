@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PrintBoardDesigner;
 using System;
+using System.Collections.Generic;
 
 namespace PrintBoardDesignerTest
 {
@@ -9,28 +10,34 @@ namespace PrintBoardDesignerTest
     {
 
         [TestMethod]
-        public void Builder_Can_Build_FullAdder()
+        public void Builder_Can_Build_Circuit()
         {
             // Arrange
             CircuitBuilder circuitBuilder = new CircuitBuilder();
-            var path = @"..\..\..\Circuits\Circuit1_FullAdder.txt";
+            Dictionary<string, string> componentsStringsDict = new Dictionary<string, string>();
+            componentsStringsDict.Add("A", "INPUT_HIGH");
+            componentsStringsDict.Add("B", "INPUT_LOW");
+            componentsStringsDict.Add("NODE1", "AND");
+            componentsStringsDict.Add("Cout", "PROBE");
+            Dictionary<string, string[]> connectionsStringsDict = new Dictionary<string, string[]>();
+            connectionsStringsDict.Add("A", new string[] { "NODE1" });
+            connectionsStringsDict.Add("B", new string[] { "NODE1" });
+            connectionsStringsDict.Add("NODE1", new string[] { "Cout" });
+
 
             // Act
-            circuitBuilder.PrepareCircuit(path);
+            circuitBuilder.PrepareCircuit(componentsStringsDict, connectionsStringsDict);
             var circuit = circuitBuilder.GetPreparedCircuit();
 
             // Assert
             Assert.IsInstanceOfType(circuit, typeof(Circuit));
             Assert.IsNotNull(circuit.InputComposite);
-            //Default: True, True, False
+            //Default: True, False
             var inode1 = (InputNode)circuit.InputComposite.GetChildren()[0];
             Assert.AreEqual(inode1.State.GetType(), new ConcreteTrueState().GetType());
 
             var inode2 = (InputNode)circuit.InputComposite.GetChildren()[1];
-            Assert.AreEqual(inode2.State.GetType(), new ConcreteTrueState().GetType());
-
-            var inode3 = (InputNode)circuit.InputComposite.GetChildren()[2];
-            Assert.AreEqual(inode3.State.GetType(), new ConcreteFalseState().GetType());
+            Assert.AreEqual(inode2.State.GetType(), new ConcreteFalseState().GetType());
         }
 
         [TestMethod]
@@ -39,10 +46,17 @@ namespace PrintBoardDesignerTest
         {
             // Arrange
             CircuitBuilder circuitBuilder = new CircuitBuilder();
-            var path = @"..\..\..\Circuits\Circuit5_NotConnected.txt";
+            Dictionary<string, string> componentsStringsDict = new Dictionary<string, string>();
+            componentsStringsDict.Add("A", "INPUT_HIGH");
+            componentsStringsDict.Add("B", "INPUT_LOW");
+            componentsStringsDict.Add("NODE1", "AND");
+            componentsStringsDict.Add("Cout", "PROBE");
+            Dictionary<string, string[]> connectionsStringsDict = new Dictionary<string, string[]>();
+            connectionsStringsDict.Add("B", new string[] { "NODE1" });
+            connectionsStringsDict.Add("NODE1", new string[] { "Cout" });
 
             // Act
-            circuitBuilder.PrepareCircuit(path);
+            circuitBuilder.PrepareCircuit(componentsStringsDict, connectionsStringsDict);
 
             // Assert
         }
@@ -53,10 +67,19 @@ namespace PrintBoardDesignerTest
         {
             // Arrange
             CircuitBuilder circuitBuilder = new CircuitBuilder();
-            var path = @"..\..\..\Circuits\Circuit4_InfiniteLoop.txt";
+            Dictionary<string, string> componentsStringsDict = new Dictionary<string, string>();
+            componentsStringsDict.Add("A", "INPUT_HIGH");
+            componentsStringsDict.Add("B", "INPUT_LOW");
+            componentsStringsDict.Add("NODE1", "AND");
+            componentsStringsDict.Add("Cout", "PROBE");
+            Dictionary<string, string[]> connectionsStringsDict = new Dictionary<string, string[]>();
+            connectionsStringsDict.Add("A", new string[] { "NODE1" });
+            connectionsStringsDict.Add("B", new string[] { "NODE1" });
+            connectionsStringsDict.Add("NODE1", new string[] { "Cout" });
+            connectionsStringsDict.Add("NODE1", new string[] { "A" });
 
             // Act
-            circuitBuilder.PrepareCircuit(path);
+            circuitBuilder.PrepareCircuit(componentsStringsDict, connectionsStringsDict);
 
             // Assert
         }
